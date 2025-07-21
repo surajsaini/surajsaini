@@ -3,245 +3,822 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Login & Products</title>
+    <title>Suraj Saini - Senior Software Quality Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        #flower-canvas {
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: white;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+            background: white;
+        }
+
+
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-text {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.5s;
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .left-image {
+            opacity: 0;
+            transform: translateX(-100px) rotate(-15deg);
+            animation: slideInLeft 1.5s ease forwards 0.2s;
+            text-align: center;
+        }
+
+        .right-image {
+            opacity: 0;
+            transform: translateX(100px) rotate(15deg);
+            animation: slideInRight 1.5s ease forwards 0.2s;
+            text-align: center;
+        }
+
+        .left-image img, .right-image img {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .left-image img:hover {
+            transform: scale(1.15) rotate(-5deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            animation-play-state: paused;
+        }
+
+        .right-image img:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            animation-play-state: paused;
+        }
+
+        .left-image {
+            animation: bounceLeft 2s ease-in-out infinite;
+        }
+
+        .right-image {
+            animation: bounceRight 2s ease-in-out infinite;
+        }
+
+        @keyframes bounceLeft {
+            0%, 100% {
+                transform: translateX(-100px) rotate(-15deg) translateY(0px);
+            }
+            25% {
+                transform: translateX(-100px) rotate(-15deg) translateY(-30px);
+            }
+            50% {
+                transform: translateX(-100px) rotate(-15deg) translateY(0px);
+            }
+            75% {
+                transform: translateX(-100px) rotate(-15deg) translateY(-15px);
+            }
+        }
+
+        @keyframes bounceRight {
+            0%, 100% {
+                transform: translateX(100px) rotate(15deg) translateY(0px);
+            }
+            25% {
+                transform: translateX(100px) rotate(15deg) translateY(-30px);
+            }
+            50% {
+                transform: translateX(100px) rotate(15deg) translateY(0px);
+            }
+            75% {
+                transform: translateX(100px) rotate(15deg) translateY(-15px);
+            }
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .skill-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .left-image img, .right-image img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .left-image, .right-image {
+                animation: none;
+                transform: none;
+            }
+
+            .left-image img, .right-image img {
+                animation: mobileBounce 1.5s ease-in-out infinite;
+            }
+
+            @keyframes mobileBounce {
+                0%, 100% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(-15px);
+                }
+            }
+
+            /* Mobile floating images adjustments */
+            .floating-image {
+                width: 50px !important;
+                height: 50px !important;
+            }
+
+            @keyframes randomBounce {
+                0% { transform: translate(0, 0) rotate(0deg); }
+                25% { transform: translate(30px, -20px) rotate(15deg); }
+                50% { transform: translate(-20px, 40px) rotate(-10deg); }
+                75% { transform: translate(25px, 20px) rotate(20deg); }
+                100% { transform: translate(0, 0) rotate(0deg); }
+            }
+
+            @keyframes randomBounce2 {
+                0% { transform: translate(0, 0) rotate(0deg); }
+                33% { transform: translate(-25px, -30px) rotate(-15deg); }
+                66% { transform: translate(40px, -15px) rotate(25deg); }
+                100% { transform: translate(0, 0) rotate(0deg); }
+            }
+
+            @keyframes randomBounce3 {
+                0% { transform: translate(0, 0) rotate(0deg); }
+                20% { transform: translate(20px, 30px) rotate(10deg); }
+                40% { transform: translate(-35px, -15px) rotate(-20deg); }
+                60% { transform: translate(15px, -25px) rotate(15deg); }
+                80% { transform: translate(-20px, 25px) rotate(-5deg); }
+                100% { transform: translate(0, 0) rotate(0deg); }
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Particle background */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw !important;
-            height: 100vh !important;
-            z-index: 1;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
             pointer-events: none;
-            display: block;
-            background: transparent;
         }
-        .container {
-            max-width: 400px;
-            margin: 60px auto;
-            background: #fff;
-            padding: 30px 40px 40px 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 2;
+
+        .particle {
+            position: absolute;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
         }
-        h2 {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: bold;
-        }
-        input[type="text"], input[type="password"] {
+
+        /* Floating Images */
+        .floating-images {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 8px;
-            margin-bottom: 18px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
         }
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
+
+        .floating-image {
+            position: absolute;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
             cursor: pointer;
-            transition: background 0.2s;
+            pointer-events: auto;
         }
-        button:hover {
-            background: #0056b3;
+
+        .floating-image:hover {
+            transform: scale(1.1);
+            z-index: 10;
         }
-        .error {
-            color: #d8000c;
-            background: #ffd2d2;
-            padding: 8px;
-            border-radius: 4px;
-            margin-bottom: 12px;
-            text-align: center;
+
+        .floating-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
         }
-        .products {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 24px;
+
+        @keyframes randomBounce {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(100px, -50px) rotate(15deg);
+            }
+            50% {
+                transform: translate(-50px, 100px) rotate(-10deg);
+            }
+            75% {
+                transform: translate(80px, 50px) rotate(20deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
         }
-        .product {
-            background: #fafafa;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            padding: 16px;
-            text-align: center;
+
+        @keyframes randomBounce2 {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(-80px, -80px) rotate(-15deg);
+            }
+            66% {
+                transform: translate(120px, -30px) rotate(25deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
         }
-        .product-title {
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        .product-price {
-            color: #007bff;
-            font-size: 18px;
+
+        @keyframes randomBounce3 {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            20% {
+                transform: translate(60px, 80px) rotate(10deg);
+            }
+            40% {
+                transform: translate(-100px, -40px) rotate(-20deg);
+            }
+            60% {
+                transform: translate(40px, -60px) rotate(15deg);
+            }
+            80% {
+                transform: translate(-60px, 60px) rotate(-5deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container" id="login-container">
-        <h2>Login</h2>
-        <div id="error-message" class="error" style="display:none;"></div>
-        <form id="login-form">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Sign In</button>
-        </form>
-    </div>
-    <canvas id="flower-canvas"></canvas>
-    <div class="container" id="home-container" style="display:none;">
-        <h2>Welcome!</h2>
-        <div class="products" id="products-list">
-            <!-- Products will be injected here -->
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Floating Images -->
+    <div class="floating-images" id="floatingImages"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="logo">Suraj Saini</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="left-image">
+                    <img src="lululemon_vancouver.jpg" alt="Vancouver" class="floating">
+                </div>
+                <div class="hero-text">
+                    <h1>Suraj Saini</h1>
+                    <h2>Senior Software Quality Engineer</h2>
+                    <p>Passionate SDET Engineer with expertise in Selenium with Java, Appium with Python, and Agile methodologies. Specialized in automation & manual testing across Retail, BFSI & Healthcare domains. Also experienced in Digital Marketing, Social Engineering, and Google AdSense.</p>
+                </div>
+                <div class="right-image">
+                    <img src="surajsaini.jpg" alt="Suraj Saini" class="floating">
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <i class="fas fa-code"></i>
+                    <h3>Selenium with Java</h3>
+                    <p>Expert in web automation testing using Selenium WebDriver with Java, implementing robust test frameworks and CI/CD pipelines.</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <i class="fab fa-python"></i>
+                    <h3>Appium with Python</h3>
+                    <p>Proficient in mobile app testing automation using Appium with Python, covering both Android and iOS platforms.</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <i class="fas fa-users"></i>
+                    <h3>Agile Practitioner</h3>
+                    <p>Experienced in Agile methodologies, sprint planning, and collaborative development processes.</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <i class="fas fa-robot"></i>
+                    <h3>Automation & Manual Testing</h3>
+                    <p>Comprehensive testing expertise including both automated and manual testing strategies.</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <i class="fas fa-building"></i>
+                    <h3>Domain Expertise</h3>
+                    <p>Specialized knowledge in Retail, BFSI (Banking, Financial Services & Insurance), and Healthcare domains.</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Digital Marketing</h3>
+                    <p>Experience in digital marketing strategies, social engineering, and Google AdSense optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-card fade-in">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <a href="https://linkedin.com/surajsaini" target="_blank">linkedin.com/surajsaini</a>
+                </div>
+                <div class="contact-card fade-in">
+                    <i class="fab fa-github"></i>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/surajsaini" target="_blank">github.com/surajsaini</a>
+                </div>
+                <div class="contact-card fade-in">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <a href="mailto:s2008saini@gmail.com">s2008saini@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
-        const loginForm = document.getElementById('login-form');
-        const errorMessage = document.getElementById('error-message');
-        const loginContainer = document.getElementById('login-container');
-        const homeContainer = document.getElementById('home-container');
-        const productsList = document.getElementById('products-list');
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-        const PRODUCTS = [
-            { title: 'Product 1', price: '$10.00' },
-            { title: 'Product 2', price: '$12.50' },
-            { title: 'Product 3', price: '$8.99' },
-            { title: 'Product 4', price: '$15.00' },
-            { title: 'Product 5', price: '$7.25' },
-            { title: 'Product 6', price: '$20.00' },
-            { title: 'Product 7', price: '$11.75' },
-            { title: 'Product 8', price: '$9.50' },
-            { title: 'Product 9', price: '$13.30' },
-            { title: 'Product 10', price: '$16.80' },
-        ];
-
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
-            if (username === 'surajsaini' && password === '1234') {
-                showHomePage();
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
             } else {
-                errorMessage.textContent = 'Invalid username or password.';
-                errorMessage.style.display = 'block';
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
             }
         });
 
-        // Flower falling animation variables
-        const flowerCanvas = document.getElementById('flower-canvas');
-        const flowerCtx = flowerCanvas.getContext('2d');
-        let flowers = [];
-        let flowerAnimationId = null;
-        let flowerActive = true;
-        const flowerTypes = [
-            { petalColor: '#ff69b4', centerColor: '#fff700', petalCount: 6, petalRadius: 10 },
-            { petalColor: '#ffa500', centerColor: '#fff700', petalCount: 5, petalRadius: 12 },
-            { petalColor: '#6a5acd', centerColor: '#fff700', petalCount: 8, petalRadius: 8 },
-            { petalColor: '#00b894', centerColor: '#fff700', petalCount: 7, petalRadius: 9 },
-        ];
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        function resizeFlowerCanvas() {
-            flowerCanvas.width = window.innerWidth;
-            flowerCanvas.height = window.innerHeight;
-        }
-        resizeFlowerCanvas();
-        window.addEventListener('resize', resizeFlowerCanvas);
-
-        function spawnFlower(x, y) {
-            const type = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
-            flowers.push({
-                x,
-                y,
-                type,
-                angle: Math.random() * Math.PI * 2,
-                sway: Math.random() * 2 * Math.PI,
-                speed: 1 + Math.random() * 1.5,
-                swaySpeed: 0.01 + Math.random() * 0.02,
-                swayRange: 10 + Math.random() * 10,
-                rotation: Math.random() * Math.PI * 2,
-                rotationSpeed: (Math.random() - 0.5) * 0.02
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
-        }
+        }, observerOptions);
 
-        document.addEventListener('mousemove', function(e) {
-            if (!flowerActive) return;
-            spawnFlower(e.clientX, e.clientY);
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
         });
 
-        function drawFlower(ctx, x, y, type, rotation) {
-            ctx.save();
-            ctx.translate(x, y);
-            ctx.rotate(rotation);
-            for (let i = 0; i < type.petalCount; i++) {
-                ctx.save();
-                ctx.rotate((2 * Math.PI * i) / type.petalCount);
-                ctx.beginPath();
-                ctx.ellipse(0, -type.petalRadius, type.petalRadius / 2, type.petalRadius, 0, 0, 2 * Math.PI);
-                ctx.fillStyle = type.petalColor;
-                ctx.fill();
-                ctx.restore();
+        // Particle background
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 5 + 2;
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                const delay = Math.random() * 6;
+                
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.animationDelay = delay + 's';
+                
+                particlesContainer.appendChild(particle);
             }
-            ctx.beginPath();
-            ctx.arc(0, 0, type.petalRadius / 2, 0, 2 * Math.PI);
-            ctx.fillStyle = type.centerColor;
-            ctx.fill();
-            ctx.restore();
         }
 
-        function animateFlowers() {
-            if (!flowerActive) return;
-            flowerCtx.clearRect(0, 0, flowerCanvas.width, flowerCanvas.height);
-            for (let flower of flowers) {
-                flower.y += flower.speed;
-                flower.sway += flower.swaySpeed;
-                flower.x += Math.sin(flower.sway) * 0.7;
-                flower.rotation += flower.rotationSpeed;
-                drawFlower(flowerCtx, flower.x, flower.y, flower.type, flower.rotation);
+        // Initialize particles
+        createParticles();
+
+        // Create floating images
+        function createFloatingImages() {
+            const floatingContainer = document.getElementById('floatingImages');
+            const imageUrls = ['surajsaini.jpg', 'lululemon_vancouver.jpg'];
+            const animations = ['randomBounce', 'randomBounce2', 'randomBounce3'];
+            
+            // Create 2 floating images (1 of each)
+            for (let i = 0; i < 2; i++) {
+                const imageDiv = document.createElement('div');
+                const img = document.createElement('img');
+                
+                // Randomly select image
+                const imageUrl = imageUrls[i % imageUrls.length];
+                img.src = imageUrl;
+                img.alt = i % 2 === 0 ? 'Suraj Saini' : 'Vancouver';
+                
+                // Random size between 60-120px
+                const size = Math.random() * 60 + 60;
+                imageDiv.style.width = size + 'px';
+                imageDiv.style.height = size + 'px';
+                
+                // Random position
+                const x = Math.random() * (window.innerWidth - size);
+                const y = Math.random() * (window.innerHeight - size);
+                imageDiv.style.left = x + 'px';
+                imageDiv.style.top = y + 'px';
+                
+                // Random animation
+                const animation = animations[Math.floor(Math.random() * animations.length)];
+                const duration = Math.random() * 10 + 15; // 15-25 seconds
+                const delay = Math.random() * 5; // 0-5 seconds delay
+                
+                imageDiv.style.animation = `${animation} ${duration}s ease-in-out infinite`;
+                imageDiv.style.animationDelay = delay + 's';
+                
+                imageDiv.className = 'floating-image';
+                imageDiv.appendChild(img);
+                
+                // Add click event to pause/resume animation
+                imageDiv.addEventListener('click', function() {
+                    if (this.style.animationPlayState === 'paused') {
+                        this.style.animationPlayState = 'running';
+                    } else {
+                        this.style.animationPlayState = 'paused';
+                    }
+                });
+                
+                floatingContainer.appendChild(imageDiv);
             }
-            flowers = flowers.filter(f => f.y < flowerCanvas.height + 20);
-            flowerAnimationId = requestAnimationFrame(animateFlowers);
-        }
-        animateFlowers();
-
-        function showHomePage() {
-            loginContainer.style.display = 'none';
-            homeContainer.style.display = 'block';
-            flowerActive = false;
-            cancelAnimationFrame(flowerAnimationId);
-            flowerCanvas.style.display = 'none';
-            renderProducts();
         }
 
-        function renderProducts() {
-            productsList.innerHTML = '';
-            PRODUCTS.forEach(product => {
-                const div = document.createElement('div');
-                div.className = 'product';
-                div.innerHTML = `
-                    <div class="product-title">${product.title}</div>
-                    <div class="product-price">${product.price}</div>
-                `;
-                productsList.appendChild(div);
+        // Initialize floating images
+        createFloatingImages();
+
+        // Add some interactive effects
+        document.addEventListener('mousemove', (e) => {
+            const particles = document.querySelectorAll('.particle');
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            particles.forEach((particle, index) => {
+                const rect = particle.getBoundingClientRect();
+                const particleX = rect.left + rect.width / 2;
+                const particleY = rect.top + rect.height / 2;
+                
+                const deltaX = mouseX - particleX;
+                const deltaY = mouseY - particleY;
+                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                
+                if (distance < 100) {
+                    const angle = Math.atan2(deltaY, deltaX);
+                    const force = (100 - distance) / 100;
+                    const moveX = Math.cos(angle) * force * 2;
+                    const moveY = Math.sin(angle) * force * 2;
+                    
+                    particle.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                } else {
+                    particle.style.transform = 'translate(0, 0)';
+                }
             });
+        });
+
+        // Add typing effect to the main title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
         }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', () => {
+            const title = document.querySelector('.hero-text h1');
+            const originalText = title.textContent;
+            setTimeout(() => {
+                typeWriter(title, originalText, 150);
+            }, 1000);
+        });
     </script>
 </body>
-</html> 
+</html>
