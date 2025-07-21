@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suraj Saini - Senior Software Quality Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -30,7 +32,7 @@
         .header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            position: fixed;
+            position: sticky;
             top: 0;
             width: 100%;
             z-index: 1000;
@@ -87,13 +89,16 @@
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            /* min-height removed for tighter layout */
             display: flex;
             align-items: center;
-            padding-top: 80px;
+            padding-top: 40px;
+            /* Reduced from 80px */
             position: relative;
             overflow: hidden;
             background: white;
+            margin-bottom: 0;
+            /* Remove any bottom margin */
         }
 
 
@@ -151,7 +156,8 @@
             text-align: center;
         }
 
-        .left-image img, .right-image img {
+        .left-image img,
+        .right-image img {
             width: 250px;
             height: 250px;
             border-radius: 20px;
@@ -182,30 +188,40 @@
         }
 
         @keyframes bounceLeft {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateX(-100px) rotate(-15deg) translateY(0px);
             }
+
             25% {
                 transform: translateX(-100px) rotate(-15deg) translateY(-30px);
             }
+
             50% {
                 transform: translateX(-100px) rotate(-15deg) translateY(0px);
             }
+
             75% {
                 transform: translateX(-100px) rotate(-15deg) translateY(-15px);
             }
         }
 
         @keyframes bounceRight {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateX(100px) rotate(15deg) translateY(0px);
             }
+
             25% {
                 transform: translateX(100px) rotate(15deg) translateY(-30px);
             }
+
             50% {
                 transform: translateX(100px) rotate(15deg) translateY(0px);
             }
+
             75% {
                 transform: translateX(100px) rotate(15deg) translateY(-15px);
             }
@@ -213,8 +229,11 @@
 
         /* Skills Section */
         .skills {
-            padding: 5rem 0;
+            padding: 2rem 0;
+            /* Reduced vertical padding */
             background: white;
+            margin-top: 0;
+            /* Remove any top margin */
         }
 
         .section-title {
@@ -270,7 +289,8 @@
 
         /* Contact Section */
         .contact {
-            padding: 5rem 0;
+            padding: 2rem 0;
+            /* Reduced vertical padding */
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
@@ -341,9 +361,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -361,66 +384,70 @@
                 gap: 1rem;
             }
 
+            .hero {
+                padding-top: 10px;
+                /* Further increased for tall header/hamburger, adjust as needed */
+                padding-bottom: 10px;
+                /* Keep bottom padding small */
+            }
+
+            .hero-text {
+                margin-top: 50px;
+                /* Ensure title is always visible below header */
+            }
+
+            .skills {
+                padding: 1rem 0;
+                /* Reduce vertical padding on mobile */
+            }
+
+            .contact {
+                padding: 1rem 0;
+                /* Reduce vertical padding on mobile */
+            }
+
             .hero-text h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: white;
+                flex-direction: column;
+                gap: 1rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                z-index: 1001;
             }
 
-            .left-image img, .right-image img {
-                width: 200px;
-                height: 200px;
+            .nav-links.open {
+                display: flex;
             }
 
-            .left-image, .right-image {
-                animation: none;
-                transform: none;
+            .hamburger {
+                display: block;
+                cursor: pointer;
+                font-size: 2rem;
+                color: #667eea;
+                background: none;
+                border: none;
+                z-index: 1002;
             }
 
-            .left-image img, .right-image img {
-                animation: mobileBounce 1.5s ease-in-out infinite;
+            .nav {
+                position: relative;
             }
 
-            @keyframes mobileBounce {
-                0%, 100% {
-                    transform: translateY(0px);
-                }
-                50% {
-                    transform: translateY(-15px);
-                }
-            }
 
-            /* Mobile floating images adjustments */
-            .floating-image {
-                width: 50px !important;
-                height: 50px !important;
-            }
+        }
 
-            @keyframes randomBounce {
-                0% { transform: translate(0, 0) rotate(0deg); }
-                25% { transform: translate(30px, -20px) rotate(15deg); }
-                50% { transform: translate(-20px, 40px) rotate(-10deg); }
-                75% { transform: translate(25px, 20px) rotate(20deg); }
-                100% { transform: translate(0, 0) rotate(0deg); }
-            }
-
-            @keyframes randomBounce2 {
-                0% { transform: translate(0, 0) rotate(0deg); }
-                33% { transform: translate(-25px, -30px) rotate(-15deg); }
-                66% { transform: translate(40px, -15px) rotate(25deg); }
-                100% { transform: translate(0, 0) rotate(0deg); }
-            }
-
-            @keyframes randomBounce3 {
-                0% { transform: translate(0, 0) rotate(0deg); }
-                20% { transform: translate(20px, 30px) rotate(10deg); }
-                40% { transform: translate(-35px, -15px) rotate(-20deg); }
-                60% { transform: translate(15px, -25px) rotate(15deg); }
-                80% { transform: translate(-20px, 25px) rotate(-5deg); }
-                100% { transform: translate(0, 0) rotate(0deg); }
-            }
+        /* Hamburger hidden on desktop */
+        .hamburger {
+            display: none;
         }
 
         /* Scroll animations */
@@ -490,15 +517,19 @@
             0% {
                 transform: translate(0, 0) rotate(0deg);
             }
+
             25% {
                 transform: translate(100px, -50px) rotate(15deg);
             }
+
             50% {
                 transform: translate(-50px, 100px) rotate(-10deg);
             }
+
             75% {
                 transform: translate(80px, 50px) rotate(20deg);
             }
+
             100% {
                 transform: translate(0, 0) rotate(0deg);
             }
@@ -508,12 +539,15 @@
             0% {
                 transform: translate(0, 0) rotate(0deg);
             }
+
             33% {
                 transform: translate(-80px, -80px) rotate(-15deg);
             }
+
             66% {
                 transform: translate(120px, -30px) rotate(25deg);
             }
+
             100% {
                 transform: translate(0, 0) rotate(0deg);
             }
@@ -523,28 +557,34 @@
             0% {
                 transform: translate(0, 0) rotate(0deg);
             }
+
             20% {
                 transform: translate(60px, 80px) rotate(10deg);
             }
+
             40% {
                 transform: translate(-100px, -40px) rotate(-20deg);
             }
+
             60% {
                 transform: translate(40px, -60px) rotate(15deg);
             }
+
             80% {
                 transform: translate(-60px, 60px) rotate(-5deg);
             }
+
             100% {
                 transform: translate(0, 0) rotate(0deg);
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Particle Background -->
     <div class="particles" id="particles"></div>
-    
+
     <!-- Floating Images -->
     <div class="floating-images" id="floatingImages"></div>
 
@@ -552,7 +592,8 @@
     <header class="header">
         <nav class="nav container">
             <a href="#" class="logo">Suraj Saini</a>
-            <ul class="nav-links">
+            <button class="hamburger" id="hamburger" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -570,7 +611,9 @@
                 <div class="hero-text">
                     <h1>Suraj Saini</h1>
                     <h2>Senior Software Quality Engineer</h2>
-                    <p>Passionate SDET Engineer with expertise in Selenium with Java, Appium with Python, and Agile methodologies. Specialized in automation & manual testing across Retail, BFSI & Healthcare domains. Also experienced in Digital Marketing, Social Engineering, and Google AdSense.</p>
+                    <p>Passionate SDET Engineer with expertise in Selenium with Java, Appium with Python, and Agile
+                        methodologies. Specialized in automation & manual testing across Retail, BFSI & Healthcare
+                        domains. Also experienced in Digital Marketing, Social Engineering, and Google AdSense.</p>
                 </div>
                 <div class="right-image">
                     <img src="surajsaini.jpg" alt="Suraj Saini" class="floating">
@@ -587,12 +630,14 @@
                 <div class="skill-card fade-in">
                     <i class="fas fa-code"></i>
                     <h3>Selenium with Java</h3>
-                    <p>Expert in web automation testing using Selenium WebDriver with Java, implementing robust test frameworks and CI/CD pipelines.</p>
+                    <p>Expert in web automation testing using Selenium WebDriver with Java, implementing robust test
+                        frameworks and CI/CD pipelines.</p>
                 </div>
                 <div class="skill-card fade-in">
                     <i class="fab fa-python"></i>
                     <h3>Appium with Python</h3>
-                    <p>Proficient in mobile app testing automation using Appium with Python, covering both Android and iOS platforms.</p>
+                    <p>Proficient in mobile app testing automation using Appium with Python, covering both Android and
+                        iOS platforms.</p>
                 </div>
                 <div class="skill-card fade-in">
                     <i class="fas fa-users"></i>
@@ -607,12 +652,14 @@
                 <div class="skill-card fade-in">
                     <i class="fas fa-building"></i>
                     <h3>Domain Expertise</h3>
-                    <p>Specialized knowledge in Retail, BFSI (Banking, Financial Services & Insurance), and Healthcare domains.</p>
+                    <p>Specialized knowledge in Retail, BFSI (Banking, Financial Services & Insurance), and Healthcare
+                        domains.</p>
                 </div>
                 <div class="skill-card fade-in">
                     <i class="fas fa-chart-line"></i>
                     <h3>Digital Marketing</h3>
-                    <p>Experience in digital marketing strategies, social engineering, and Google AdSense optimization.</p>
+                    <p>Experience in digital marketing strategies, social engineering, and Google AdSense optimization.
+                    </p>
                 </div>
             </div>
         </div>
@@ -626,7 +673,7 @@
                 <div class="contact-card fade-in">
                     <i class="fab fa-linkedin"></i>
                     <h3>LinkedIn</h3>
-                    <a href="https://linkedin.com/surajsaini" target="_blank">linkedin.com/surajsaini</a>
+                    <a href="https://linkedin.com/in/surajsaini" target="_blank">linkedin.com/in/surajsaini</a>
                 </div>
                 <div class="contact-card fade-in">
                     <i class="fab fa-github"></i>
@@ -695,18 +742,18 @@
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                
+
                 const size = Math.random() * 5 + 2;
                 const x = Math.random() * window.innerWidth;
                 const y = Math.random() * window.innerHeight;
                 const delay = Math.random() * 6;
-                
+
                 particle.style.width = size + 'px';
                 particle.style.height = size + 'px';
                 particle.style.left = x + 'px';
                 particle.style.top = y + 'px';
                 particle.style.animationDelay = delay + 's';
-                
+
                 particlesContainer.appendChild(particle);
             }
         }
@@ -719,48 +766,48 @@
             const floatingContainer = document.getElementById('floatingImages');
             const imageUrls = ['surajsaini.jpg', 'lululemon_vancouver.jpg'];
             const animations = ['randomBounce', 'randomBounce2', 'randomBounce3'];
-            
+
             // Create 2 floating images (1 of each)
             for (let i = 0; i < 2; i++) {
                 const imageDiv = document.createElement('div');
                 const img = document.createElement('img');
-                
+
                 // Randomly select image
                 const imageUrl = imageUrls[i % imageUrls.length];
                 img.src = imageUrl;
                 img.alt = i % 2 === 0 ? 'Suraj Saini' : 'Vancouver';
-                
+
                 // Random size between 60-120px
                 const size = Math.random() * 60 + 60;
                 imageDiv.style.width = size + 'px';
                 imageDiv.style.height = size + 'px';
-                
+
                 // Random position
                 const x = Math.random() * (window.innerWidth - size);
                 const y = Math.random() * (window.innerHeight - size);
                 imageDiv.style.left = x + 'px';
                 imageDiv.style.top = y + 'px';
-                
+
                 // Random animation
                 const animation = animations[Math.floor(Math.random() * animations.length)];
                 const duration = Math.random() * 10 + 15; // 15-25 seconds
                 const delay = Math.random() * 5; // 0-5 seconds delay
-                
+
                 imageDiv.style.animation = `${animation} ${duration}s ease-in-out infinite`;
                 imageDiv.style.animationDelay = delay + 's';
-                
+
                 imageDiv.className = 'floating-image';
                 imageDiv.appendChild(img);
-                
+
                 // Add click event to pause/resume animation
-                imageDiv.addEventListener('click', function() {
+                imageDiv.addEventListener('click', function () {
                     if (this.style.animationPlayState === 'paused') {
                         this.style.animationPlayState = 'running';
                     } else {
                         this.style.animationPlayState = 'paused';
                     }
                 });
-                
+
                 floatingContainer.appendChild(imageDiv);
             }
         }
@@ -773,22 +820,22 @@
             const particles = document.querySelectorAll('.particle');
             const mouseX = e.clientX;
             const mouseY = e.clientY;
-            
+
             particles.forEach((particle, index) => {
                 const rect = particle.getBoundingClientRect();
                 const particleX = rect.left + rect.width / 2;
                 const particleY = rect.top + rect.height / 2;
-                
+
                 const deltaX = mouseX - particleX;
                 const deltaY = mouseY - particleY;
                 const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                
+
                 if (distance < 100) {
                     const angle = Math.atan2(deltaY, deltaX);
                     const force = (100 - distance) / 100;
                     const moveX = Math.cos(angle) * force * 2;
                     const moveY = Math.sin(angle) * force * 2;
-                    
+
                     particle.style.transform = `translate(${moveX}px, ${moveY}px)`;
                 } else {
                     particle.style.transform = 'translate(0, 0)';
@@ -800,7 +847,7 @@
         function typeWriter(element, text, speed = 100) {
             let i = 0;
             element.innerHTML = '';
-            
+
             function type() {
                 if (i < text.length) {
                     element.innerHTML += text.charAt(i);
@@ -819,6 +866,18 @@
                 typeWriter(title, originalText, 150);
             }, 1000);
         });
+
+        // Hamburger menu toggle for mobile
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', function () {
+                navLinks.classList.toggle('open');
+            });
+        }
+
+
     </script>
 </body>
+
 </html>
