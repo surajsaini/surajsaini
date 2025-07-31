@@ -295,7 +295,7 @@
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -303,7 +303,7 @@
         .contact-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 15px;
             text-align: center;
             transition: transform 0.3s ease;
@@ -383,6 +383,10 @@
             .hero-content {
                 gap: 0;
             }
+            .dropping-image {
+                width: 120px;
+                height: 120px;
+            }
         }
         @media (max-width: 768px) {
             .hero-content {
@@ -405,15 +409,17 @@
                 width: 80px;
                 height: 80px;
             }
+            .dropping-image {
+                width: 80px;
+                height: 80px;
+            }
 
             .skills {
                 padding: 1rem 0;
-                /* Reduce vertical padding on mobile */
             }
 
             .contact {
                 padding: 1rem 0;
-                /* Reduce vertical padding on mobile */
             }
 
             .hero-text h1 {
@@ -469,101 +475,64 @@
         }
 
         /* Floating Images */
-        .floating-images {
+        .dropping-image {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .floating-image {
-            position: absolute;
-            border-radius: 15px;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            pointer-events: auto;
-        }
-
-        .floating-image:hover {
-            transform: scale(1.1);
             z-index: 10;
+            pointer-events: none;
+            animation: dropAndBounce 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
-        .floating-image img {
+        .dropping-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 15px;
+            border-radius: 50%;
         }
 
-        @keyframes randomBounce {
+        @keyframes dropAndBounce {
             0% {
-                transform: translate(0, 0) rotate(0deg);
+                top: -240px;
+                left: 20px;
+                transform: scale(1);
             }
-
             25% {
-                transform: translate(100px, -50px) rotate(15deg);
+                top: calc(100vh - 240px);
+                left: 20px;
+                transform: scale(0.6);
             }
-
-            50% {
-                transform: translate(-50px, 100px) rotate(-10deg);
+            35% {
+                top: calc(100vh - 300px);
+                left: 20px;
+                transform: scale(0.9);
             }
-
+            45% {
+                top: calc(100vh - 280px);
+                left: 20px;
+                transform: scale(0.7);
+            }
+            55% {
+                top: calc(100vh - 260px);
+                left: 20px;
+                transform: scale(0.95);
+            }
+            65% {
+                top: calc(100vh - 240px);
+                left: 20px;
+                transform: scale(1);
+            }
             75% {
-                transform: translate(80px, 50px) rotate(20deg);
+                top: calc(100vh - 240px);
+                left: 40%;
+                transform: scale(1);
             }
-
             100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-        }
-
-        @keyframes randomBounce2 {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-
-            33% {
-                transform: translate(-80px, -80px) rotate(-15deg);
-            }
-
-            66% {
-                transform: translate(120px, -30px) rotate(25deg);
-            }
-
-            100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-        }
-
-        @keyframes randomBounce3 {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-
-            20% {
-                transform: translate(60px, 80px) rotate(10deg);
-            }
-
-            40% {
-                transform: translate(-100px, -40px) rotate(-20deg);
-            }
-
-            60% {
-                transform: translate(40px, -60px) rotate(15deg);
-            }
-
-            80% {
-                transform: translate(-60px, 60px) rotate(-5deg);
-            }
-
-            100% {
-                transform: translate(0, 0) rotate(0deg);
+                top: calc(100vh - 260px);
+                left: calc(100% - 260px);
+                transform: scale(1);
             }
         }
     </style>
@@ -574,7 +543,9 @@
     <div class="particles" id="particles"></div>
 
     <!-- Floating Images -->
-    <div class="floating-images" id="floatingImages"></div>
+    <div class="dropping-image" id="droppingImage">
+        <img src="lululemon_vancouver.jpg" alt="Vancouver">
+    </div>
 
     <!-- Header -->
     <header class="header">
@@ -617,14 +588,12 @@
                 <div class="skill-card fade-in">
                     <i class="fas fa-code"></i>
                     <h3>Selenium with Java</h3>
-                    <p>Expert in web automation testing using Selenium WebDriver with Java, implementing robust test
-                        frameworks and CI/CD pipelines.</p>
+                    <p>Expert in web automation testing using Selenium WebDriver with Java, implementing robust test frameworks and CI/CD pipelines.</p>
                 </div>
                 <div class="skill-card fade-in">
                     <i class="fab fa-python"></i>
                     <h3>Appium with Python</h3>
-                    <p>Proficient in mobile app testing automation using Appium with Python, covering both Android and
-                        iOS platforms.</p>
+                    <p>Proficient in mobile app testing automation using Appium with Python, covering both Android and iOS platforms.</p>
                 </div>
                 <div class="skill-card fade-in">
                     <i class="fas fa-users"></i>
@@ -639,14 +608,7 @@
                 <div class="skill-card fade-in">
                     <i class="fas fa-building"></i>
                     <h3>Domain Expertise</h3>
-                    <p>Specialized knowledge in Retail, BFSI (Banking, Financial Services & Insurance), and Healthcare
-                        domains.</p>
-                </div>
-                <div class="skill-card fade-in">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Digital Marketing</h3>
-                    <p>Experience in digital marketing strategies, social engineering, and Google AdSense optimization.
-                    </p>
+                    <p>Specialized knowledge in Retail, BFSI (Banking, Financial Services & Insurance), and Healthcare domains.</p>
                 </div>
             </div>
         </div>
@@ -666,6 +628,11 @@
                     <i class="fab fa-github"></i>
                     <h3>GitHub</h3>
                     <a href="https://github.com/surajsaini" target="_blank">github.com/surajsaini</a>
+                </div>
+                <div class="contact-card fade-in">
+                    <i class="fas fa-code"></i>
+                    <h3>LeetCode</h3>
+                    <a href="https://leetcode.com/u/SurajSainiCA" target="_blank">leetcode.com/u/SurajSainiCA</a>
                 </div>
                 <div class="contact-card fade-in">
                     <i class="fas fa-envelope"></i>
@@ -747,88 +714,6 @@
 
         // Initialize particles
         createParticles();
-
-        // Create floating images
-        function createFloatingImages() {
-            const floatingContainer = document.getElementById('floatingImages');
-            const imageUrls = ['surajsaini.jpg', 'lululemon_vancouver.jpg'];
-            const animations = ['randomBounce', 'randomBounce2', 'randomBounce3'];
-
-            // Create 2 floating images (1 of each)
-            for (let i = 0; i < 2; i++) {
-                const imageDiv = document.createElement('div');
-                const img = document.createElement('img');
-
-                // Randomly select image
-                const imageUrl = imageUrls[i % imageUrls.length];
-                img.src = imageUrl;
-                img.alt = i % 2 === 0 ? 'Suraj Saini' : 'Vancouver';
-
-                // Random size between 60-120px
-                const size = Math.random() * 60 + 60;
-                imageDiv.style.width = size + 'px';
-                imageDiv.style.height = size + 'px';
-
-                // Random position
-                const x = Math.random() * (window.innerWidth - size);
-                const y = Math.random() * (window.innerHeight - size);
-                imageDiv.style.left = x + 'px';
-                imageDiv.style.top = y + 'px';
-
-                // Random animation
-                const animation = animations[Math.floor(Math.random() * animations.length)];
-                const duration = Math.random() * 10 + 15; // 15-25 seconds
-                const delay = Math.random() * 5; // 0-5 seconds delay
-
-                imageDiv.style.animation = `${animation} ${duration}s ease-in-out infinite`;
-                imageDiv.style.animationDelay = delay + 's';
-
-                imageDiv.className = 'floating-image';
-                imageDiv.appendChild(img);
-
-                // Add click event to pause/resume animation
-                imageDiv.addEventListener('click', function () {
-                    if (this.style.animationPlayState === 'paused') {
-                        this.style.animationPlayState = 'running';
-                    } else {
-                        this.style.animationPlayState = 'paused';
-                    }
-                });
-
-                floatingContainer.appendChild(imageDiv);
-            }
-        }
-
-        // Initialize floating images
-        createFloatingImages();
-
-        // Add some interactive effects
-        document.addEventListener('mousemove', (e) => {
-            const particles = document.querySelectorAll('.particle');
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-
-            particles.forEach((particle, index) => {
-                const rect = particle.getBoundingClientRect();
-                const particleX = rect.left + rect.width / 2;
-                const particleY = rect.top + rect.height / 2;
-
-                const deltaX = mouseX - particleX;
-                const deltaY = mouseY - particleY;
-                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-                if (distance < 100) {
-                    const angle = Math.atan2(deltaY, deltaX);
-                    const force = (100 - distance) / 100;
-                    const moveX = Math.cos(angle) * force * 2;
-                    const moveY = Math.sin(angle) * force * 2;
-
-                    particle.style.transform = `translate(${moveX}px, ${moveY}px)`;
-                } else {
-                    particle.style.transform = 'translate(0, 0)';
-                }
-            });
-        });
 
         // Add typing effect to the main title
         function typeWriter(element, text, speed = 100) {
