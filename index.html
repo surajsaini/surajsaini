@@ -87,6 +87,50 @@
             width: 100%;
         }
 
+        /* Dropdown Menu */
+        .nav-links li {
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.7rem 1.5rem;
+            color: #333;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown a:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        .dropdown a::after {
+            display: none;
+        }
+
         /* Hero Section */
         .hero {
             display: flex;
@@ -553,6 +597,13 @@
             <a href="#" class="logo">Suraj Saini</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
+                <li>
+                    <a href="#projects">Projects</a>
+                    <div class="dropdown">
+                        <a href="english-phonic-kids-app.html">English Phonic Kids App</a>
+                        <a href="french-phonic-kids-app.html">French Phonic Kids App</a>
+                    </div>
+                </li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
