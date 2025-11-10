@@ -76,9 +76,9 @@ class WordLearningApp {
      */
     detectLanguage() {
         const path = window.location.pathname;
-        if (path.includes('french.html')) {
+        if (path.includes('french-phonic.html') || path.includes('french.html')) {
             this.language = 'french';
-        } else if (path.includes('english-phonic-kids-app.html') || path.includes('english.html')) {
+        } else if (path.includes('english-phonic.html') || path.includes('english-phonic-kids-app.html') || path.includes('english.html')) {
             this.language = 'english';
         }
     }
@@ -88,7 +88,7 @@ class WordLearningApp {
      */
     isWordPage() {
         const path = window.location.pathname;
-        return path.includes('english-phonic-kids-app.html') || path.includes('english.html') || path.includes('french.html');
+        return path.includes('english-phonic.html') || path.includes('english-phonic-kids-app.html') || path.includes('english.html') || path.includes('french-phonic.html') || path.includes('french.html');
     }
 
     /**
