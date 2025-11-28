@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T5FJHCFFR2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-T5FJHCFFR2');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Comprehensive guide to elections in Vancouver: Federal, Provincial, and Municipal. Find results, representatives, and voting information.">
+    <meta name="keywords"
+        content="Vancouver elections, municipal election, provincial election, federal election, voting Vancouver, BC politics">
+    <meta name="author" content="Suraj Saini">
+    <title>Vancouver Elections Guide - Federal, Provincial, Municipal</title>
+    <link rel="icon" type="image/x-icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%232c3e50'>🗳️</text></svg>">
+    <link rel="stylesheet" href="election.css">
+    <script src="election.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <span>🗳️</span>
+                    <span>Vancouver Elections</span>
+                </a>
+                <div class="header-controls">
+                    <nav>
+                        <a href="#federal">Federal</a>
+                        <a href="#provincial">Provincial</a>
+                        <a href="#municipal">Municipal</a>
+
+                    </nav>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Vancouver Elections Hub</h1>
+            <p>Your complete guide to understanding and participating in Vancouver's democratic process. Explore
+                results, representatives, and upcoming election information.</p>
+        </div>
+    </section>
+
+    <!-- News Ticker Section -->
+    <section class="news-ticker-section" id="news">
+        <div class="container" style="overflow: hidden;">
+            <div class="news-ticker-container">
+                <!-- News Items -->
+                <div class="news-card">
+                    <h4>🗳️ Election 2025</h4>
+                    <p>Federal election preparations are underway. Check your registration status today.</p>
+                </div>
+                <div class="news-card">
+                    <h4>🍁 BC Politics</h4>
+                    <p>New legislative session begins in Victoria with focus on housing and healthcare.</p>
+                </div>
+                <div class="news-card">
+                    <h4>🏙️ City Hall Update</h4>
+                    <p>Vancouver City Council votes on new zoning bylaws for transit corridors.</p>
+                </div>
+                <div class="news-card">
+                    <h4>📅 Important Date</h4>
+                    <p>Advance voting for the upcoming by-election opens next week.</p>
+                </div>
+                <div class="news-card">
+                    <h4>📢 Community</h4>
+                    <p>Town hall meeting scheduled for Vancouver-Point Grey residents this Saturday.</p>
+                </div>
+                <!-- Duplicate for smooth scrolling loop -->
+                <div class="news-card">
+                    <h4>🗳️ Election 2025</h4>
+                    <p>Federal election preparations are underway. Check your registration status today.</p>
+                </div>
+                <div class="news-card">
+                    <h4>🍁 BC Politics</h4>
+                    <p>New legislative session begins in Victoria with focus on housing and healthcare.</p>
+                </div>
+                <div class="news-card">
+                    <h4>🏙️ City Hall Update</h4>
+                    <p>Vancouver City Council votes on new zoning bylaws for transit corridors.</p>
+                </div>
+                <div class="news-card">
+                    <h4>📅 Important Date</h4>
+                    <p>Advance voting for the upcoming by-election opens next week.</p>
+                </div>
+                <div class="news-card">
+                    <h4>📢 Community</h4>
+                    <p>Town hall meeting scheduled for Vancouver-Point Grey residents this Saturday.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="upcoming">
+        <div class="container">
+            <h2>Upcoming Vancouver Election</h2>
+            <p><strong>Voting Day:</strong> October 17, 2026</p>
+
+            <ul>
+                <li>Election for 1 Mayor and 10 City Councillors</li>
+                <li>Election for 7 Park Board Commissioners</li>
+                <li>Election for 9 School Board Trustees</li>
+                <li>Includes 3 Capital Plan Questions</li>
+                <li>
+                    <a href="https://elections.bc.ca/local-elections/2026-general-local-elections/" target="_blank"
+                        rel="noopener">
+                        Visit the official Elections BC website
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- Federal Elections -->
+    <section id="federal">
+        <div class="container">
+            <h2>Vancouver Federal Elections</h2>
+            <p class="section-description">Federal elections elect Members of Parliament (MPs) to represent Vancouver
+                ridings in the House of Commons in Ottawa. Each riding elects one MP using a first-past-the-post system.
+            </p>
+
+            <div class="constituency-grid">
+                <!-- Vancouver Centre -->
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver Centre</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2025 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Hedy Fry (Liberal)</span>
+                                <div class="result-stats">
+                                    <span>29,855 Votes</span>
+                                    <span>55.2%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Elaine Allan (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>16,368 Votes</span>
+                                    <span>30.3%</span>
+                                </div>
+                            </div>
+
+                            <h5 class="election-year-header">2021 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Hedy Fry (Liberal)</span>
+                                <div class="result-stats">
+                                    <span>20,873 Votes</span>
+                                    <span>40.44%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Breen Ouellette (NDP)</span>
+                                <div class="result-stats">
+                                    <span>15,869 Votes</span>
+                                    <span>30.74%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vancouver East -->
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver East</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2025 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Jenny Kwan (NDP)</span>
+                                <div class="result-stats">
+                                    <span>24,945 Votes</span>
+                                    <span>43.6%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Mark Wiens (Liberal)</span>
+                                <div class="result-stats">
+                                    <span>20,287 Votes</span>
+                                    <span>35.5%</span>
+                                </div>
+                            </div>
+
+                            <h5 class="election-year-header">2021 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Jenny Kwan (NDP)</span>
+                                <div class="result-stats">
+                                    <span>27,969 Votes</span>
+                                    <span>56.40%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Josh Vander Vies (Liberal)</span>
+                                <div class="result-stats">
+                                    <span>9,797 Votes</span>
+                                    <span>19.76%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vancouver Granville -->
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver Granville</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2025 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Taleeb Noormohamed (Liberal)</span>
+                                <div class="result-stats">
+                                    <span>37,010 Votes</span>
+                                    <span>62.1%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Marie Rogers (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>17,133 Votes</span>
+                                    <span>28.8%</span>
+                                </div>
+                            </div>
+
+                            <h5 class="election-year-header">2021 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Taleeb Noormohamed (Liberal)</span>
+                                <div class="result-stats">
+                                    <span>17,050 Votes</span>
+                                    <span>34.40%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Anjali Appadurai (NDP)</span>
+                                <div class="result-stats">
+                                    <span>16,619 Votes</span>
+                                    <span>33.53%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vancouver Kingsway -->
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver Kingsway</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2025 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Don Davies (NDP)</span>
+                                <div class="result-stats">
+                                    <span>18,788 Votes</span>
+                                    <span>37.2%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Amy K. Gill (Liberal)</span>
+                                <div class="result-stats">
+                                    <span>18,485 Votes</span>
+                                    <span>36.6%</span>
+                                </div>
+                            </div>
+
+                            <h5 class="election-year-header">2021 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Don Davies (NDP)</span>
+                                <div class="result-stats">
+                                    <span>20,994 Votes</span>
+                                    <span>52.28%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Virginia Bremner (Liberal)</span>
+                                <div class="result-stats">
+                                    <span>11,022 Votes</span>
+                                    <span>27.45%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vancouver Quadra -->
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver Quadra</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2025 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Wade Grant (Liberal)</span>
+                                <div class="result-stats">
+                                    <span>35,384 Votes</span>
+                                    <span>63.2%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Ken Charko (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>17,008 Votes</span>
+                                    <span>30.4%</span>
+                                </div>
+                            </div>
+
+                            <h5 class="election-year-header">2021 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Joyce Murray (Liberal)</span>
+                                <div class="result-stats">
+                                    <span>20,814 Votes</span>
+                                    <span>43.63%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Brad Armstrong (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>13,786 Votes</span>
+                                    <span>28.90%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vancouver Fraserview—South Burnaby -->
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver Fraserview-South Burnaby</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2025 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Gregor Robertson (Liberal)</span>
+                                <div class="result-stats">
+                                    <span>27,117 Votes</span>
+                                    <span>52.3%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Avi Nayyar (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>18,500 Votes</span>
+                                    <span>35.7%</span>
+                                </div>
+                            </div>
+
+                            <h5 class="election-year-header">2021 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Harjit S. Sajjan (Liberal)</span>
+                                <div class="result-stats">
+                                    <span>19,910 Votes</span>
+                                    <span>49.43%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Sean McQuillan (NDP)</span>
+                                <div class="result-stats">
+                                    <span>9,922 Votes</span>
+                                    <span>24.63%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Richmond Centre—Marpole -->
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Richmond Centre-Marpole</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2025 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Chak Au (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>23,532 Votes</span>
+                                    <span>49.56%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Wilson Miao (Liberal)</span>
+                                <div class="result-stats">
+                                    <span>21,232 Votes</span>
+                                    <span>44.71%</span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Provincial Elections -->
+    <section id="provincial">
+        <div class="container">
+            <h2>Vancouver Provincial Elections</h2>
+            <p class="section-description">Provincial elections elect Members of the Legislative Assembly (MLAs) to
+                represent Vancouver ridings in the Legislative Assembly of British Columbia in Victoria.</p>
+
+            <div class="constituency-grid">
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver-Fraserview</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2024 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">George Chow (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>11,896 Votes</span>
+                                    <span>57.18%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Jag S Sanghera (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>7,618 Votes</span>
+                                    <span>36.62%</span>
+                                </div>
+                            </div>
+
+                            <h5 class="election-year-header">2020 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">George Chow (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>12,247 Votes</span>
+                                    <span>56.37%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">David Grewal (BC Liberal)</span>
+                                <div class="result-stats">
+                                    <span>7,511 Votes</span>
+                                    <span>34.57%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver-Hastings</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2024 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Niki Sharma (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>14,237 Votes</span>
+                                    <span>64.15%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Jacob Burdge (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>5,391 Votes</span>
+                                    <span>24.29%</span>
+                                </div>
+                            </div>
+
+                            <h5 class="election-year-header">2020 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Niki Sharma (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>13,362 Votes</span>
+                                    <span>60.56%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Bridget Burns (BC Green)</span>
+                                <div class="result-stats">
+                                    <span>4,312 Votes</span>
+                                    <span>19.54%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver-Kensington</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2024 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Mable Elmore (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>11,713 Votes</span>
+                                    <span>60.90%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Syed Mohsin (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>6,061 Votes</span>
+                                    <span>31.52%</span>
+                                </div>
+                            </div>
+
+                            <h5 class="election-year-header">2020 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Mable Elmore (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>12,481 Votes</span>
+                                    <span>59.97%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Paul Lepage (BC Liberal)</span>
+                                <div class="result-stats">
+                                    <span>5,255 Votes</span>
+                                    <span>25.25%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver-Langara</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2024 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Sunita Dhir (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>8,506 Votes</span>
+                                    <span>48.43%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Bryan Breguet (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>8,087 Votes</span>
+                                    <span>46.05%</span>
+                                </div>
+                            </div>
+
+                            <h5 class="election-year-header">2020 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Michael Lee (BC Liberal)</span>
+                                <div class="result-stats">
+                                    <span>9,888 Votes</span>
+                                    <span>48.51%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Tesicca Chi-Ying Truong (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>8,431 Votes</span>
+                                    <span>41.36%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver-Little Mountain</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2024 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Christine Boyle (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>15,636 Votes</span>
+                                    <span>62.11%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">John Coupar (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>7,704 Votes</span>
+                                    <span>30.60%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver-Point Grey</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2024 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">David Eby (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>12,538 Votes</span>
+                                    <span>56.77%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Paul Ratchford (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>7,622 Votes</span>
+                                    <span>34.51%</span>
+                                </div>
+                            </div>
+
+                            <h5 class="election-year-header">2020 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">David Eby (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>12,602 Votes</span>
+                                    <span>51.32%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Mark Bowen (BC Liberal)</span>
+                                <div class="result-stats">
+                                    <span>7,712 Votes</span>
+                                    <span>31.41%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver-Quilchena</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2024 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Dallas Brodie (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>11,464 Votes</span>
+                                    <span>51.58%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Callista Ryan (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>8,649 Votes</span>
+                                    <span>38.91%</span>
+                                </div>
+                            </div>
+
+                            <h5 class="election-year-header">2020 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Andrew Wilkinson (BC Liberal)</span>
+                                <div class="result-stats">
+                                    <span>12,157 Votes</span>
+                                    <span>56.04%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Heather McQuillan (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>6,197 Votes</span>
+                                    <span>28.56%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver-Renfrew</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2024 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Adrian Dix (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>10,983 Votes</span>
+                                    <span>63.22%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Tom Ikonomou (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>5,327 Votes</span>
+                                    <span>30.66%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver-South Granville</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2024 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Brenda Bailey (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>17,208 Votes</span>
+                                    <span>64.31%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Aron Lageri (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>6,678 Votes</span>
+                                    <span>24.96%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver-Strathcona</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2024 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Joan Phillip (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>13,673 Votes</span>
+                                    <span>68.17%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Scott Muller (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>3,430 Votes</span>
+                                    <span>17.10%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver-West End</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2024 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Spencer Chandra Herbert (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>13,143 Votes</span>
+                                    <span>63.01%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Jon Ellacott (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>5,677 Votes</span>
+                                    <span>27.22%</span>
+                                </div>
+                            </div>
+
+                            <h5 class="election-year-header">2020 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Spencer Chandra Herbert (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>12,439 Votes</span>
+                                    <span>62.31%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Jon Ellacott (BC Liberal)</span>
+                                <div class="result-stats">
+                                    <span>4,014 Votes</span>
+                                    <span>20.11%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver-Yaletown</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <h5 class="election-year-header">2024 Results</h5>
+                            <div class="result-row winner">
+                                <span class="result-name">Terry Yung (BC NDP)</span>
+                                <div class="result-stats">
+                                    <span>9,018 Votes</span>
+                                    <span>49.76%</span>
+                                </div>
+                            </div>
+                            <div class="result-row runner-up">
+                                <span class="result-name">Melissa De Genova (Conservative)</span>
+                                <div class="result-stats">
+                                    <span>7,857 Votes</span>
+                                    <span>43.35%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Municipal Elections -->
+    <section id="municipal">
+        <div class="container">
+            <h2>Vancouver Municipal Local Elections</h2>
+            <p class="section-description">Municipal elections occur every four years. The purpose is to elect the Mayor
+                of Vancouver, city councillors, school trustees, and park board commissioners.</p>
+
+            <div class="constituency-grid">
+                <!-- Vancouver -->
+                <div class="constituency-card">
+                    <div class="card-header">
+                        <h4>Vancouver</h4>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="details-content">
+                            <div class="detail-row">
+                                <span class="detail-label">Mayor (2022)</span>
+                                <span class="detail-value">Ken Sim (ABC Vancouver)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Vancouver Elections Guide. All rights reserved.</p>
+            <p>Data sources: Elections BC, Elections Canada, City of Vancouver.</p>
+        </div>
+    </footer>
+
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">↑</button>
+
+</body>
+
+</html>
