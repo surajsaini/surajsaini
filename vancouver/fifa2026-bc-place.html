@@ -44,6 +44,7 @@
                 <div class="header-controls">
                     <nav>
                         <a href="#matches">Matches</a>
+                        <a href="#news">News</a>
                         <a href="#history">History</a>
                         <a href="#directions">Directions</a>
                         <a href="#contact">Links</a>
@@ -138,6 +139,7 @@
 
                 <div class="match-card">
                     <div class="match-date">July 2, 2026</div>
+                    <div class="match-time">🕗 8:00 PM PT</div>
                     <div class="match-stage">Round of 32</div>
                     <div class="match-number">Match 85</div>
                     <div class="match-teams">Winner Group B VS 3rd Group E/F/G/I/J</div>
@@ -150,6 +152,7 @@
 
                 <div class="match-card">
                     <div class="match-date">July 7, 2026</div>
+                    <div class="match-time">🕗 1:00 PM PT</div>
                     <div class="match-stage">Round of 16</div>
                     <div class="match-number">Match 96</div>
                     <div class="match-teams">Winner Match 85 VS Winner Match 87</div>
@@ -157,6 +160,62 @@
                     <div class="weather">
                         <strong>Weather:</strong> Average 12°C - 11°C
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News -->
+    <section id="news" class="news-section">
+        <div class="container">
+            <h2>📰 Latest News & Updates</h2>
+            <div class="news-carousel-container">
+                <div class="news-carousel" id="newsCarousel">
+
+                    <a href="fifa2026-news-downtown-turn-into-pedestrian-party-zone.html" class="news-tile">
+                        <div class="news-tile-header">
+                            <span class="news-tile-category">🏟️ Fan Guide</span>
+                            <div class="news-tile-date">📅 December 8, 2025</div>
+                        </div>
+                        <div class="news-tile-content">
+                            <div class="news-tile-title">World Cup Buzz Alert: Your Vancity Fan Survival Guide</div>
+                            <p class="news-tile-excerpt">The FIFA World Cup is rolling into town! Traffic warnings,
+                                transit tips, and how to navigate Vancouver during the tournament.</p>
+                            <span class="news-tile-link">Read More →</span>
+                        </div>
+                    </a>
+
+                    <a href="fifa2026-news-vancity-law-changes-world-cup-rules.html" class="news-tile">
+                        <div class="news-tile-header">
+                            <span class="news-tile-category">� Local Laws</span>
+                            <div class="news-tile-date">📅 December 8, 2025</div>
+                        </div>
+                        <div class="news-tile-content">
+                            <div class="news-tile-title">Vancity Law Changes: World Cup Got Us Changing Rules!</div>
+                            <p class="news-tile-excerpt">Vancouver is changing local bylaws for the tournament. Learn
+                                about the new zones around BC Place and what it means for businesses.</p>
+                            <span class="news-tile-link">Read More →</span>
+                        </div>
+                    </a>
+
+                    <!-- Placeholder tile for future news -->
+                    <div class="news-tile" style="opacity: 0.5; pointer-events: none;">
+                        <div class="news-tile-header">
+                            <span class="news-tile-category">📢 Coming Soon</span>
+                            <div class="news-tile-date">Stay Tuned</div>
+                        </div>
+                        <div class="news-tile-content">
+                            <div class="news-tile-title">More News Coming Soon!</div>
+                            <p class="news-tile-excerpt">Check back for the latest updates about FIFA 2026 at BC Place
+                                Vancouver.</p>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="carouselPrev" aria-label="Previous news">←</button>
+                    <button class="carousel-btn" id="carouselNext" aria-label="Next news">→</button>
                 </div>
             </div>
         </div>

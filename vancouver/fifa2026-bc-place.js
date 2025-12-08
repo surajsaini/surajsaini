@@ -28,28 +28,28 @@ initializeTheme();
 // ===== Countdown Timers =====
 function updateCountdowns() {
     const countdownElements = document.querySelectorAll('.countdown');
-    
+
     countdownElements.forEach(element => {
         const targetDate = new Date(element.getAttribute('data-target')).getTime();
-        
+
         function updateTimer() {
             const now = new Date().getTime();
             const distance = targetDate - now;
-            
+
             if (distance < 0) {
                 element.textContent = '⏰ Match Starting Soon!';
                 element.style.background = '#28a745';
                 return;
             }
-            
+
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
+
             element.textContent = `⏱️ ${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
-        
+
         updateTimer();
         setInterval(updateTimer, 1000);
     });
@@ -152,3 +152,54 @@ skipLink.addEventListener('blur', () => {
 });
 
 document.body.insertBefore(skipLink, document.body.firstChild);
+
+// ===== News Carousel =====
+const newsCarousel = document.getElementById('newsCarousel');
+const carouselPrev = document.getElementById('carouselPrev');
+const carouselNext = document.getElementById('carouselNext');
+
+if (newsCarousel && carouselPrev && carouselNext) {
+    const scrollAmount = 340; // Width of tile + gap
+    let autoScrollInterval;
+
+    // Manual scroll controls
+    carouselPrev.addEventListener('click', () => {
+        newsCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    carouselNext.addEventListener('click', () => {
+        newsCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+
+    // Auto-scroll function
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            const maxScrollLeft = newsCarousel.scrollWidth - newsCarousel.clientWidth;
+            if (newsCarousel.scrollLeft >= maxScrollLeft) {
+                newsCarousel.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                newsCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }, 5000); // Scroll every 5 seconds
+    }
+
+    // Pause auto-scroll on hover
+    newsCarousel.addEventListener('mouseenter', () => {
+        clearInterval(autoScrollInterval);
+    });
+
+    newsCarousel.addEventListener('mouseleave', () => {
+        startAutoScroll();
+    });
+
+    // Start auto-scroll
+    startAutoScroll();
+
+    // Track news tile clicks
+    document.querySelectorAll('.news-tile').forEach(tile => {
+        tile.addEventListener('click', () => {
+            const title = tile.querySelector('.news-tile-title')?.textContent;
+            trackEvent('news', 'click', title);
+        });
+    });
+}
