@@ -16,11 +16,11 @@ class WordLearningApp {
         this.dom = {
             wordsGrid: null
         };
-        
+
         // Speech synthesis setup
         this.synth = window.speechSynthesis;
         this.voices = [];
-        
+
         // Initialize the app
         this.init();
     }
@@ -31,20 +31,20 @@ class WordLearningApp {
     async init() {
         try {
             console.log('Initializing WordLearningApp...');
-            
+
             // Load voices when they're ready
             this.loadVoices();
             this.synth.onvoiceschanged = () => this.loadVoices();
-            
+
             // Determine current page and language
             this.detectLanguage();
             console.log('Detected language:', this.language);
-            
+
             // Check if we're on a word page
             const isWordPage = this.isWordPage();
             console.log('Is word page:', isWordPage);
             console.log('Current path:', window.location.pathname);
-            
+
             // Load words based on current page
             if (isWordPage) {
                 console.log('Loading words...');
@@ -54,15 +54,15 @@ class WordLearningApp {
             } else {
                 console.log('Not a word page, skipping word loading.');
             }
-            
+
             // Setup event listeners
             console.log('Setting up event listeners...');
             this.setupEventListeners();
-            
+
         } catch (error) {
             console.error('Error initializing app:', error);
             this.showError('Failed to initialize the app. Please refresh the page.');
-            
+
             // Clear loading state even on error
             const wordsGrid = document.getElementById('words-grid');
             if (wordsGrid) {
@@ -100,13 +100,55 @@ class WordLearningApp {
 
     /**
      * Get appropriate voice for current language
+     * Prefers soft, child-friendly female voices
      */
     getVoice() {
         if (!this.voices || this.voices.length === 0) return null;
+
+        // Define preferred soft/female voice names (common across browsers)
+        const preferredVoiceNames = [
+            'Samantha', 'Victoria', 'Karen', 'Moira', 'Fiona', // macOS/iOS soft voices
+            'Microsoft Zira', 'Microsoft Eva', 'Microsoft Aria', // Windows soft voices  
+            'Google UK English Female', 'Google US English Female', // Chrome voices
+            'Nicky', 'Shelley', 'Sandy', 'Allison' // Other soft voices
+        ];
+
         if (this.language === 'french') {
+            // Try to find soft French female voice first
+            const frenchFemale = this.voices.find(v =>
+                (v.lang.includes('fr-CA') || v.lang.includes('fr-FR') || v.lang.includes('fr')) &&
+                (v.name.toLowerCase().includes('female') ||
+                    v.name.includes('Amelie') || v.name.includes('Marie') ||
+                    v.name.includes('Aurelie') || v.name.includes('Virginie'))
+            );
+            if (frenchFemale) return frenchFemale;
             return this.voices.find(v => v.lang.includes('fr-CA') || v.lang.includes('fr-FR') || v.lang.includes('fr')) || this.voices[0];
         }
-        return this.voices.find(v => v.lang.includes('en-CA') || v.lang.includes('en-US') || v.lang.includes('en')) || this.voices[0];
+
+        // For English, prioritize soft female voices
+        const englishVoices = this.voices.filter(v =>
+            v.lang.includes('en-CA') || v.lang.includes('en-US') || v.lang.includes('en-GB') || v.lang.includes('en')
+        );
+
+        // Try to find a preferred soft voice by name
+        for (const preferredName of preferredVoiceNames) {
+            const match = englishVoices.find(v => v.name.includes(preferredName));
+            if (match) return match;
+        }
+
+        // Try to find any female voice
+        const femaleVoice = englishVoices.find(v =>
+            v.name.toLowerCase().includes('female') ||
+            v.name.toLowerCase().includes('woman') ||
+            v.name.includes('Samantha') || v.name.includes('Victoria')
+        );
+        if (femaleVoice) return femaleVoice;
+
+        // Fall back to any English voice, preferring Canadian
+        return englishVoices.find(v => v.lang.includes('en-CA')) ||
+            englishVoices.find(v => v.lang.includes('en-US')) ||
+            englishVoices[0] ||
+            this.voices[0];
     }
 
     /**
@@ -125,37 +167,37 @@ class WordLearningApp {
             const url = `data/${fileName}`;
             console.log('Attempting to load words from:', url);
             console.log('Current language:', this.language);
-            
+
             const response = await fetch(url);
-            
+
             if (!response.ok) {
                 throw new Error(`Failed to load words: ${response.status} ${response.statusText}\nURL: ${url}`);
             }
-            
+
             console.log('Response received:', response.status);
             const data = await response.json();
             console.log('Data loaded, word count:', data.length);
-            
+
             this.words = data;
             this.filteredWords = [...this.words];
             // Build lookup map
             this.wordLookup.clear();
             this.words.forEach(w => { if (w && w.word) this.wordLookup.set(w.word, w); });
-            
+
             // Ensure words are valid
             if (!Array.isArray(this.words) || this.words.length === 0) {
                 throw new Error('No valid words found in data file');
             }
-            
+
             console.log('Words loaded successfully:', this.words.length);
-            
+
             // Re-enable game button
             if (gameBtn) {
                 gameBtn.disabled = false;
                 gameBtn.style.opacity = '1';
                 gameBtn.innerHTML = '<span aria-hidden="true">🎮</span><span>Word Game</span>';
             }
-            
+
         } catch (error) {
             console.error('Error loading words:', error);
             console.error('Current page:', window.location.pathname);
@@ -168,12 +210,28 @@ class WordLearningApp {
 
     /**
      * Setup word page functionality
+     * Don't show all words initially - show welcome section first
      */
     setupWordPage() {
-        this.renderWords();
-        // Cache DOM references post-render
+        // Cache DOM references
         this.dom.wordsGrid = document.getElementById('words-grid');
+        this.dom.welcomeSection = document.getElementById('welcome-section');
+        this.dom.wordsSection = document.getElementById('words-section');
+
         this.setupFilterOptions();
+
+        // Show welcome section, hide words initially (don't render all 500 words)
+        if (this.dom.welcomeSection) {
+            this.dom.welcomeSection.style.display = 'block';
+        }
+        if (this.dom.wordsSection) {
+            this.dom.wordsSection.style.display = 'none';
+        }
+
+        // Clear the loading message since words are loaded but not displayed yet
+        if (this.dom.wordsGrid) {
+            this.dom.wordsGrid.innerHTML = '';
+        }
     }
 
     /**
@@ -212,6 +270,23 @@ class WordLearningApp {
             showAllBtn.addEventListener('click', () => this.showAllWords());
         }
 
+        // Welcome section CTA buttons
+        const startLearningBtn = document.getElementById('start-learning-btn');
+        if (startLearningBtn) {
+            startLearningBtn.addEventListener('click', () => {
+                this.hideWelcomeShowWords();
+                this.showRandomWords();
+            });
+        }
+
+        const exploreAllBtn = document.getElementById('explore-all-btn');
+        if (exploreAllBtn) {
+            exploreAllBtn.addEventListener('click', () => {
+                this.hideWelcomeShowWords();
+                this.showAllWords();
+            });
+        }
+
         // Floating game button
         const floatingGameBtn = document.getElementById('floating-game-btn');
         if (floatingGameBtn) {
@@ -243,7 +318,7 @@ class WordLearningApp {
 
         const categories = this.getUniqueCategories();
         filterSelect.innerHTML = '<option value="all">All Words</option>';
-        
+
         categories.forEach(category => {
             const option = document.createElement('option');
             option.value = category;
@@ -289,16 +364,16 @@ class WordLearningApp {
      */
     searchWords(searchTerm) {
         if (!searchTerm.trim()) {
-            this.filteredWords = this.currentFilter === 'all' ? 
-                [...this.words] : 
+            this.filteredWords = this.currentFilter === 'all' ?
+                [...this.words] :
                 this.words.filter(word => word.category === this.currentFilter);
         } else {
             const term = searchTerm.toLowerCase();
-            const baseWords = this.currentFilter === 'all' ? 
-                this.words : 
+            const baseWords = this.currentFilter === 'all' ?
+                this.words :
                 this.words.filter(word => word.category === this.currentFilter);
-            
-            this.filteredWords = baseWords.filter(word => 
+
+            this.filteredWords = baseWords.filter(word =>
                 word.word.toLowerCase().includes(term) ||
                 word.phonics.toLowerCase().includes(term)
             );
@@ -312,7 +387,7 @@ class WordLearningApp {
     filterWords(category) {
         this.currentFilter = category;
         const searchTerm = document.getElementById('search-bar')?.value || '';
-        
+
         if (category === 'all') {
             this.filteredWords = [...this.words];
         } else {
@@ -336,7 +411,7 @@ class WordLearningApp {
             console.error('Words grid element not found');
             return;
         }
-        
+
         if (!this.filteredWords || this.filteredWords.length === 0) {
             wordsGrid.innerHTML = '<p class="no-words">No words found matching your criteria.</p>';
             return;
@@ -344,7 +419,7 @@ class WordLearningApp {
 
         // Clear loading state
         wordsGrid.innerHTML = '';
-        
+
         // Build document fragment for efficiency
         const frag = document.createDocumentFragment();
         this.filteredWords.forEach(wordObj => {
@@ -362,25 +437,25 @@ class WordLearningApp {
             console.error('Invalid word object:', wordObj);
             return document.createElement('div'); // Return empty div to prevent errors
         }
-        
+
         const button = document.createElement('button');
         button.className = 'word-btn';
         button.dataset.word = wordObj.word;
-        
+
         // Create word text element
         const wordSpan = document.createElement('span');
         wordSpan.className = 'word-text';
         wordSpan.textContent = wordObj.word;
-        
+
         // Create phonics element
         const phonicsSpan = document.createElement('span');
         phonicsSpan.className = 'word-phonics';
         phonicsSpan.textContent = `(${wordObj.phonics})`;
-        
+
         // Add both to button
         button.appendChild(wordSpan);
         button.appendChild(phonicsSpan);
-        
+
         // Add clicked class if this is the current word
         if (this.currentWord && this.currentWord.word === wordObj.word) {
             button.classList.add('clicked');
@@ -407,6 +482,7 @@ class WordLearningApp {
 
     /**
      * Speak a word using Web Speech API
+     * Uses soft, gentle voice settings perfect for children
      */
     speakWord(wordObj) {
         if (!this.synth) {
@@ -419,16 +495,21 @@ class WordLearningApp {
 
         const utterance = new SpeechSynthesisUtterance(wordObj.word);
         const voice = this.getVoice();
-        
+
         if (voice) {
             utterance.voice = voice;
         }
-        
+
         // Set language-specific properties
-        utterance.lang = this.language === 'french' ? 'fr-FR' : 'en-US';
-        utterance.rate = 0.8; // Slightly slower for learning
-        utterance.pitch = 1.1; // Slightly higher pitch for friendliness
-        utterance.volume = 1;
+        utterance.lang = this.language === 'french' ? 'fr-FR' : 'en-CA';
+
+        // SOFT, GENTLE VOICE SETTINGS for children
+        // Slower rate makes it easier for kids to understand
+        utterance.rate = 0.7;
+        // Slightly lower pitch for a warmer, more soothing tone (not scary)
+        utterance.pitch = 0.95;
+        // Moderate volume - not too loud, comfortable for young ears
+        utterance.volume = 0.85;
 
         // Add error handling
         utterance.onerror = (event) => {
@@ -442,6 +523,18 @@ class WordLearningApp {
         this.synth.speak(utterance);
     }
 
+    /**
+     * Hide welcome section and show words section
+     */
+    hideWelcomeShowWords() {
+        if (this.dom.welcomeSection) {
+            this.dom.welcomeSection.style.display = 'none';
+        }
+        if (this.dom.wordsSection) {
+            this.dom.wordsSection.style.display = 'block';
+        }
+    }
+
 
 
     /**
@@ -453,10 +546,10 @@ class WordLearningApp {
         if (index > -1) {
             this.clickedWords.splice(index, 1);
         }
-        
+
         // Add to beginning
         this.clickedWords.unshift(word);
-        
+
         // Keep only last 20
         this.clickedWords = this.clickedWords.slice(0, 20);
     }
@@ -465,16 +558,19 @@ class WordLearningApp {
      * Show random words
      */
     showRandomWords() {
+        // Ensure words section is visible
+        this.hideWelcomeShowWords();
+
         const randomWords = this.getRandomWords(20);
         this.filteredWords = randomWords;
         this.renderWords();
-        
+
         // Clear search and filter
         const searchBar = document.getElementById('search-bar');
         const filterSelect = document.getElementById('filter-select');
         if (searchBar) searchBar.value = '';
         if (filterSelect) filterSelect.value = 'all';
-        
+
         this.showToast('Showing 20 random words!');
     }
 
@@ -490,24 +586,27 @@ class WordLearningApp {
      * Show last 20 clicked words
      */
     showLastClickedWords() {
+        // Ensure words section is visible
+        this.hideWelcomeShowWords();
+
         if (this.clickedWords.length === 0) {
             this.showToast('No clicked words yet!');
             return;
         }
-        
-        const clickedWordObjects = this.clickedWords.map(word => 
+
+        const clickedWordObjects = this.clickedWords.map(word =>
             this.words.find(w => w.word === word)
         ).filter(Boolean);
-        
+
         this.filteredWords = clickedWordObjects;
         this.renderWords();
-        
+
         // Clear search and filter
         const searchBar = document.getElementById('search-bar');
         const filterSelect = document.getElementById('filter-select');
         if (searchBar) searchBar.value = '';
         if (filterSelect) filterSelect.value = 'all';
-        
+
         this.showToast(`Showing your last ${clickedWordObjects.length} clicked words!`);
     }
 
@@ -515,17 +614,20 @@ class WordLearningApp {
      * Show all words (reset to full collection)
      */
     showAllWords() {
+        // Ensure words section is visible
+        this.hideWelcomeShowWords();
+
         // Reset to all words
         this.filteredWords = [...this.words];
         this.renderWords();
-        
+
         // Clear search and reset filter
         const searchBar = document.getElementById('search-bar');
         const filterSelect = document.getElementById('filter-select');
         if (searchBar) searchBar.value = '';
         if (filterSelect) filterSelect.value = 'all';
         this.currentFilter = 'all';
-        
+
         this.showToast(`Showing all ${this.words.length} words!`);
     }
 
@@ -543,11 +645,11 @@ class WordLearningApp {
         const modal = document.getElementById('game-modal');
         const gameResults = document.getElementById('game-results');
         const isResultsVisible = gameResults && gameResults.style.display !== 'none';
-        
+
         if (this.gameState && modal && modal.style.display === 'flex' && !isResultsVisible) {
             return; // Game already running (but not on results screen)
         }
-        
+
         this.initializeGame();
         this.showGameModal();
         this.startNewGameRound();
@@ -571,7 +673,7 @@ class WordLearningApp {
 
         // Create Web Audio context for sounds
         this.initializeAudio();
-        
+
         // Select 10 words: 5 easy, 5 hard
         this.selectGameWords();
     }
@@ -598,10 +700,10 @@ class WordLearningApp {
             return;
         }
 
-        const easyWords = this.words.filter(word => 
+        const easyWords = this.words.filter(word =>
             word.category === 'simple' && word.word.length <= 3
         );
-        const hardWords = this.words.filter(word => 
+        const hardWords = this.words.filter(word =>
             ['digraph', 'blend', 'trigraph', 'vowel_team'].includes(word.category)
         );
 
@@ -615,7 +717,7 @@ class WordLearningApp {
         // Shuffle and select
         const selectedEasy = this.shuffleArray([...easyWords]).slice(0, 5);
         const selectedHard = this.shuffleArray([...hardWords]).slice(0, 5);
-        
+
         this.gameState.gameWords = [...selectedEasy, ...selectedHard];
         this.gameState.gameWords = this.shuffleArray(this.gameState.gameWords);
     }
@@ -639,16 +741,16 @@ class WordLearningApp {
         const modal = document.getElementById('game-modal');
         if (modal) {
             modal.style.display = 'flex';
-            
+
             // Ensure header elements are visible (in case they were hidden on results screen)
             const scoreElement = document.querySelector('.score');
             const timerElement = document.querySelector('.timer');
             const closeButton = document.getElementById('close-game');
-            
+
             if (scoreElement) scoreElement.style.display = 'block';
             if (timerElement) timerElement.style.display = 'block';
             if (closeButton) closeButton.style.display = 'block';
-            
+
             this.setupGameEventListeners();
             // Accessibility: focus management
             this.previousFocus = document.activeElement;
@@ -751,9 +853,9 @@ class WordLearningApp {
             // For longer words, try to remove digraphs/blends
             const digraphs = ['SH', 'CH', 'TH', 'PH', 'WH'];
             const blends = ['ST', 'SP', 'SK', 'SM', 'SN', 'SL', 'SW', 'SC'];
-            
+
             let found = false;
-            
+
             // Check for digraphs first
             for (const digraph of digraphs) {
                 const index = word.indexOf(digraph);
@@ -764,7 +866,7 @@ class WordLearningApp {
                     break;
                 }
             }
-            
+
             // If no digraph found, check for blends
             if (!found) {
                 for (const blend of blends) {
@@ -777,7 +879,7 @@ class WordLearningApp {
                     }
                 }
             }
-            
+
             // Fallback: remove random letter
             if (!found) {
                 const position = Math.floor(Math.random() * word.length);
@@ -796,10 +898,10 @@ class WordLearningApp {
      */
     generateLetterOptions(correctAnswer) {
         const options = [correctAnswer];
-        
+
         // Generate similar wrong options
         const wrongOptions = this.generateSimilarLetters(correctAnswer);
-        
+
         // Add 3 wrong options
         while (options.length < 4 && wrongOptions.length > 0) {
             const randomWrong = wrongOptions.splice(Math.floor(Math.random() * wrongOptions.length), 1)[0];
@@ -807,7 +909,7 @@ class WordLearningApp {
                 options.push(randomWrong);
             }
         }
-        
+
         // Fill remaining slots if needed
         while (options.length < 4) {
             const randomLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
@@ -815,7 +917,7 @@ class WordLearningApp {
                 options.push(randomLetter);
             }
         }
-        
+
         this.gameState.letterOptions = this.shuffleArray(options);
     }
 
@@ -861,7 +963,7 @@ class WordLearningApp {
             'SK': ['ST', 'SP', 'SM'],
             'SM': ['ST', 'SP', 'SK']
         };
-        
+
         return similar[correctAnswer] || ['X', 'Y', 'Z'];
     }
 
@@ -870,15 +972,15 @@ class WordLearningApp {
      */
     updateGameUI() {
         // Update score
-        document.getElementById('game-score').textContent = 
+        document.getElementById('game-score').textContent =
             `${this.gameState.score}/${this.gameState.totalQuestions}`;
-        
+
         // Update timer
         document.getElementById('game-timer').textContent = this.gameState.timeLeft;
-        
+
         // Update word display
         document.getElementById('game-word').textContent = this.gameState.displayWord;
-        
+
         // Update letter options
         const letterButtons = document.querySelectorAll('.letter-option');
         letterButtons.forEach((btn, index) => {
@@ -887,10 +989,10 @@ class WordLearningApp {
             btn.className = 'letter-option'; // Reset classes
             btn.disabled = false;
         });
-        
+
         // Clear feedback
         document.getElementById('game-feedback').innerHTML = '';
-        
+
         // Hide results, show game content
         document.getElementById('game-results').style.display = 'none';
         document.querySelector('.game-content').style.display = 'block';
@@ -903,11 +1005,11 @@ class WordLearningApp {
         if (this.gameState.timer) {
             clearInterval(this.gameState.timer);
         }
-        
+
         this.gameState.timer = setInterval(() => {
             this.gameState.timeLeft--;
             document.getElementById('game-timer').textContent = this.gameState.timeLeft;
-            
+
             if (this.gameState.timeLeft <= 0) {
                 this.timeUp();
             }
@@ -939,25 +1041,25 @@ class WordLearningApp {
      */
     selectLetter(letter) {
         if (this.gameState.isAnswered) return;
-        
+
         this.gameState.isAnswered = true;
         clearInterval(this.gameState.timer);
-        
+
         const isCorrect = letter === this.gameState.correctAnswer;
-        
+
         if (isCorrect) {
             this.gameState.score++; this.playSound('correct'); this.showFeedback(true, '🎉 Correct! Well done!');
         } else {
             this.playSound('wrong'); this.showFeedback(false, `😔 Wrong! Correct answer: ${this.gameState.correctAnswer}`);
         }
-        
+
         const buttons = document.querySelectorAll('.letter-option');
         buttons.forEach(btn => {
             if (btn.dataset.letter === letter) btn.classList.add(isCorrect ? 'correct' : 'wrong');
             else if (btn.dataset.letter === this.gameState.correctAnswer) btn.classList.add('correct');
             btn.disabled = true;
         });
-        
+
         setTimeout(() => this.nextQuestion(), 2500);
     }
 
@@ -983,14 +1085,14 @@ class WordLearningApp {
      */
     playSound(type) {
         if (!this.audioContext) return;
-        
+
         try {
             const oscillator = this.audioContext.createOscillator();
             const gainNode = this.audioContext.createGain();
-            
+
             oscillator.connect(gainNode);
             gainNode.connect(this.audioContext.destination);
-            
+
             if (type === 'correct') {
                 // Happy ascending tone
                 oscillator.frequency.setValueAtTime(523.25, this.audioContext.currentTime); // C5
@@ -1002,11 +1104,11 @@ class WordLearningApp {
                 oscillator.frequency.setValueAtTime(329.63, this.audioContext.currentTime + 0.15); // E4
                 oscillator.frequency.setValueAtTime(261.63, this.audioContext.currentTime + 0.3); // C4
             }
-            
+
             oscillator.type = 'sine';
             gainNode.gain.setValueAtTime(0.1, this.audioContext.currentTime);
             gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.5);
-            
+
             oscillator.start(this.audioContext.currentTime);
             oscillator.stop(this.audioContext.currentTime + 0.5);
         } catch (error) {
@@ -1019,28 +1121,28 @@ class WordLearningApp {
      */
     endGame() {
         clearInterval(this.gameState.timer);
-        
+
         // Hide game content, show results
         document.querySelector('.game-content').style.display = 'none';
         document.getElementById('game-results').style.display = 'block';
-        
+
         // Hide header elements on results screen
         const scoreElement = document.querySelector('.score');
         const timerElement = document.querySelector('.timer');
         const closeButton = document.getElementById('close-game');
-        
+
         if (scoreElement) scoreElement.style.display = 'none';
         if (timerElement) timerElement.style.display = 'none';
         if (closeButton) closeButton.style.display = 'none';
-        
+
         // Update final score
-        document.getElementById('final-score').textContent = 
+        document.getElementById('final-score').textContent =
             `${this.gameState.score}/${this.gameState.totalQuestions}`;
-        
+
         // Generate results message
         const percentage = (this.gameState.score / this.gameState.totalQuestions) * 100;
         let message = '';
-        
+
         if (percentage >= 90) {
             message = '🌟 Outstanding! You\'re a word wizard!';
         } else if (percentage >= 70) {
@@ -1050,7 +1152,7 @@ class WordLearningApp {
         } else {
             message = '💪 Keep trying! You\'ll get better with practice!';
         }
-        
+
         document.getElementById('results-message').textContent = message;
     }
 
@@ -1068,7 +1170,7 @@ class WordLearningApp {
         this.gameState = null;
         this.disableFocusTrap();
         if (this.previousFocus && typeof this.previousFocus.focus === 'function') {
-            try { this.previousFocus.focus(); } catch(_) {}
+            try { this.previousFocus.focus(); } catch (_) { }
         }
     }
 
