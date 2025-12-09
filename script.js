@@ -194,6 +194,182 @@ function animateTimeline() {
 
 animateTimeline();
 
+// ==========================================
+// PROJECTS CAROUSEL
+// ==========================================
+function initProjectsCarousel() {
+    const carousel = document.querySelector('.projects-carousel');
+    const track = document.querySelector('.projects-track');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    const dotsContainer = document.querySelector('.carousel-dots');
+
+    if (!carousel || !track) return;
+
+    const cards = track.querySelectorAll('.project-card');
+    if (cards.length === 0) return;
+
+    let currentIndex = 0;
+    let autoScrollInterval = null;
+    const autoScrollDelay = 3000; // 3 seconds between auto-scrolls
+
+    // Calculate card width including gap
+    function getCardWidth() {
+        const card = cards[0];
+        const style = window.getComputedStyle(track);
+        const gap = parseFloat(style.gap) || 24;
+        return card.offsetWidth + gap;
+    }
+
+    // Calculate how many cards are visible
+    function getVisibleCards() {
+        const containerWidth = carousel.offsetWidth;
+        const cardWidth = cards[0].offsetWidth;
+        return Math.floor(containerWidth / cardWidth) || 1;
+    }
+
+    // Calculate max index
+    function getMaxIndex() {
+        const visibleCards = getVisibleCards();
+        return Math.max(0, cards.length - visibleCards);
+    }
+
+    // Create dots
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        const maxIndex = getMaxIndex();
+
+        for (let i = 0; i <= maxIndex; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    // Update dots
+    function updateDots() {
+        const dots = dotsContainer.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    // Update arrow states
+    function updateArrows() {
+        const maxIndex = getMaxIndex();
+        // For infinite-feel carousel, don't disable arrows - just loop
+        prevBtn.style.opacity = '1';
+        nextBtn.style.opacity = '1';
+    }
+
+    // Go to specific slide
+    function goToSlide(index) {
+        const maxIndex = getMaxIndex();
+
+        // Loop around for infinite effect
+        if (index < 0) {
+            currentIndex = maxIndex;
+        } else if (index > maxIndex) {
+            currentIndex = 0;
+        } else {
+            currentIndex = index;
+        }
+
+        const offset = currentIndex * getCardWidth();
+        track.style.transform = `translateX(-${offset}px)`;
+
+        updateDots();
+        updateArrows();
+    }
+
+    // Next slide
+    function nextSlide() {
+        goToSlide(currentIndex + 1);
+    }
+
+    // Previous slide
+    function prevSlide() {
+        goToSlide(currentIndex - 1);
+    }
+
+    // Start auto-scroll
+    function startAutoScroll() {
+        stopAutoScroll();
+        autoScrollInterval = setInterval(nextSlide, autoScrollDelay);
+    }
+
+    // Stop auto-scroll
+    function stopAutoScroll() {
+        if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+        }
+    }
+
+    // Event listeners
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        startAutoScroll(); // Reset timer after manual navigation
+    });
+
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        startAutoScroll(); // Reset timer after manual navigation
+    });
+
+    // Pause on hover
+    carousel.addEventListener('mouseenter', stopAutoScroll);
+    carousel.addEventListener('mouseleave', startAutoScroll);
+
+    // Touch/swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoScroll();
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        startAutoScroll();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                nextSlide(); // Swipe left = next
+            } else {
+                prevSlide(); // Swipe right = prev
+            }
+        }
+    }
+
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            createDots();
+            goToSlide(Math.min(currentIndex, getMaxIndex()));
+        }, 200);
+    });
+
+    // Initialize
+    createDots();
+    updateArrows();
+    startAutoScroll();
+}
+
+// Initialize carousel when DOM is ready
+document.addEventListener('DOMContentLoaded', initProjectsCarousel);
+
 // Console easter egg
 console.log('%c👋 Hello there, fellow developer!', 'font-size: 18px; font-weight: bold; color: #667eea;');
 console.log('%cThanks for checking out my portfolio.', 'font-size: 14px; color: #764ba2;');

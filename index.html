@@ -61,14 +61,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li>
-                    <a href="#side-projects">Side Projects</a>
-                    <div class="dropdown">
-                        <a href="vancouver/fifa2026-bc-place.html">FIFA 2026 Vancouver</a>
-                        <a href="kids-learning-app/english-phonic.html">English Phonic Kids App</a>
-                        <a href="kids-learning-app/french-phonic.html">French Phonic Kids App</a>
-                    </div>
-                </li>
+                <li><a href="#side-projects">Side Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -85,6 +78,8 @@
                     <h1>Suraj Saini</h1>
                     <h2>Software Development Engineer in Test</h2>
                     <p class="location"><i class="fas fa-map-marker-alt"></i> Vancouver, BC, Canada</p>
+                    <p class="email"><i class="fas fa-envelope"></i> <a
+                            href="mailto:s2008saini@gmail.com">s2008saini@gmail.com</a></p>
                 </div>
                 <div class="right-image">
                     <img src="surajsaini.jpg" alt="Suraj Saini - SDET based in Vancouver" class="floating">
@@ -310,42 +305,75 @@
         </div>
     </section>
 
-    <!-- Side Projects Section (Simple Style) -->
+    <!-- Side Projects Section (Carousel Style) -->
     <section class="side-projects" id="side-projects">
         <div class="container">
             <h2 class="section-title">Side Projects</h2>
             <p class="section-subtitle">Personal projects and freelance work outside of my professional role</p>
 
-            <div class="projects-list">
-                <a href="vancouver/fifa2026-bc-place.html" class="project-item">
-                    <i class="fas fa-futbol"></i>
-                    <div class="project-info">
-                        <div class="project-title">FIFA 2026 Vancouver Tracker</div>
-                        <div class="project-desc">Live match countdown and information for FIFA World Cup 2026 games at
-                            BC Place</div>
-                    </div>
-                    <i class="fas fa-arrow-right arrow"></i>
-                </a>
+            <div class="projects-carousel-wrapper">
+                <button class="carousel-arrow carousel-prev" aria-label="Previous project">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
 
-                <a href="kids-learning-app/english-phonic.html" class="project-item">
-                    <i class="fas fa-book-open"></i>
-                    <div class="project-info">
-                        <div class="project-title">English Phonics Learning App</div>
-                        <div class="project-desc">Interactive phonics learning app for children with audio pronunciation
-                        </div>
-                    </div>
-                    <i class="fas fa-arrow-right arrow"></i>
-                </a>
+                <div class="projects-carousel">
+                    <div class="projects-track">
+                        <a href="vancouver/fifa2026-bc-place.html" class="project-card">
+                            <div class="project-icon">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <div class="project-info">
+                                <div class="project-title">FIFA 2026 Vancouver Tracker</div>
+                                <div class="project-desc">Live match countdown and information for FIFA World Cup 2026
+                                    games at BC Place</div>
+                            </div>
+                            <i class="fas fa-arrow-right arrow"></i>
+                        </a>
 
-                <a href="kids-learning-app/french-phonic.html" class="project-item">
-                    <i class="fas fa-language"></i>
-                    <div class="project-info">
-                        <div class="project-title">French Phonics Learning App</div>
-                        <div class="project-desc">French language learning app for kids with native pronunciation</div>
+                        <a href="kids-learning-app/english-phonic.html" class="project-card">
+                            <div class="project-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="project-info">
+                                <div class="project-title">English Phonics Learning App</div>
+                                <div class="project-desc">Interactive phonics learning app for children with audio
+                                    pronunciation</div>
+                            </div>
+                            <i class="fas fa-arrow-right arrow"></i>
+                        </a>
+
+                        <a href="kids-learning-app/french-phonic.html" class="project-card">
+                            <div class="project-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <div class="project-info">
+                                <div class="project-title">French Phonics Learning App</div>
+                                <div class="project-desc">French language learning app for kids with native
+                                    pronunciation</div>
+                            </div>
+                            <i class="fas fa-arrow-right arrow"></i>
+                        </a>
+
+                        <a href="https://sharmaflorist.com" class="project-card" target="_blank" rel="noopener">
+                            <div class="project-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div class="project-info">
+                                <div class="project-title">Sharma Florist</div>
+                                <div class="project-desc">Flower delivery service website with beautiful UI and
+                                    animations</div>
+                            </div>
+                            <i class="fas fa-arrow-right arrow"></i>
+                        </a>
                     </div>
-                    <i class="fas fa-arrow-right arrow"></i>
-                </a>
+                </div>
+
+                <button class="carousel-arrow carousel-next" aria-label="Next project">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
+
+            <div class="carousel-dots"></div>
         </div>
     </section>
 
@@ -386,7 +414,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-left">
-                    <div class="copyright">© 2024 Suraj Saini. All rights reserved.</div>
+                    <div class="copyright">© 2026 Suraj Saini. All rights reserved.</div>
                     <div class="location"><i class="fas fa-map-marker-alt"></i> Vancouver, BC, Canada</div>
                 </div>
                 <div class="footer-right">
