@@ -1403,45 +1403,21 @@ a.match-card-link .match-card {
     border-radius: 15px;
 }
 
-/* Result Badges */
-.result-w,
-.result-d,
-.result-l {
-    display: inline-block;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
-    text-align: center;
-    border-radius: 50%;
-    font-weight: bold;
-    font-size: 14px;
-    color: white;
-}
 
-.result-w {
-    background: #27ae60;
-}
 
-.result-d {
-    background: #f39c12;
-}
 
-.result-l {
-    background: #e74c3c;
-}
-
-/* Table Responsive Wrapper */
-.table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin-bottom: 20px;
-}
-
-.table-responsive .roster-table {
-    min-width: 500px;
-}
 
 /* Mobile Responsive for Match Pages */
+/* Team Form */
+.team-form {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    color: #ffeb3b;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
 @media (max-width: 768px) {
     .countdown-small {
         font-size: 12px;
@@ -1453,28 +1429,9 @@ a.match-card-link .match-card {
         padding: 4px 10px;
     }
 
-    .result-w,
-    .result-d,
-    .result-l {
-        width: 24px;
-        height: 24px;
-        line-height: 24px;
+    .team-form {
         font-size: 12px;
-    }
-
-    /* Hide Competition column on mobile */
-    .hide-mobile {
-        display: none;
-    }
-
-    .roster-table {
-        table-layout: auto;
-    }
-
-    .roster-table th,
-    .roster-table td {
-        padding: 8px 10px;
-        font-size: 13px;
+        letter-spacing: 0.5px;
     }
 }
 

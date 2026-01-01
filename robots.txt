@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# AI Chatbots and Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap
+Sitemap: https://surajsaini.com/vancouver/world-cup-2026/sitemap.xml
