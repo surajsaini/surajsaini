@@ -27,7 +27,7 @@ initializeTheme();
 
 // ===== Countdown Timers =====
 function updateCountdowns() {
-    const countdownElements = document.querySelectorAll('.countdown');
+    const countdownElements = document.querySelectorAll('.countdown, .countdown-small');
 
     countdownElements.forEach(element => {
         const targetDate = new Date(element.getAttribute('data-target')).getTime();

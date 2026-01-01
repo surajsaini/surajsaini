@@ -273,6 +273,54 @@ h3 {
     background: var(--bg-alt);
 }
 
+/* Roster Table */
+.roster-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    table-layout: fixed;
+}
+
+.roster-table thead {
+    background: var(--primary-color);
+    color: white;
+}
+
+.roster-table th,
+.roster-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+.roster-table th {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.roster-table tbody tr:hover {
+    background: var(--bg-alt);
+}
+
+.roster-table tbody tr:nth-child(even) {
+    background: rgba(102, 126, 234, 0.05);
+}
+
+@media (max-width: 768px) {
+    .roster-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .roster-table th,
+    .roster-table td {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+}
+
 /* Ranking Card */
 .ranking-card {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -1327,5 +1375,116 @@ a.match-card-link .match-card {
 
     .faq-item h3 {
         font-size: 16px;
+    }
+}
+
+/* ===== Match Page Additional Styles ===== */
+
+/* Small Countdown */
+.countdown-small {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;
+    backdrop-filter: blur(10px);
+}
+
+/* Team Ranking */
+.team-ranking {
+    font-size: 14px;
+    opacity: 0.9;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 5px 12px;
+    border-radius: 15px;
+}
+
+/* Result Badges */
+.result-w,
+.result-d,
+.result-l {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+}
+
+.result-w {
+    background: #27ae60;
+}
+
+.result-d {
+    background: #f39c12;
+}
+
+.result-l {
+    background: #e74c3c;
+}
+
+/* Table Responsive Wrapper */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px;
+}
+
+.table-responsive .roster-table {
+    min-width: 500px;
+}
+
+/* Mobile Responsive for Match Pages */
+@media (max-width: 768px) {
+    .countdown-small {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    .team-ranking {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+
+    .result-w,
+    .result-d,
+    .result-l {
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 12px;
+    }
+
+    /* Hide Competition column on mobile */
+    .hide-mobile {
+        display: none;
+    }
+
+    .roster-table {
+        table-layout: auto;
+    }
+
+    .roster-table th,
+    .roster-table td {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .match-teams-display .team-ranking {
+        font-size: 11px;
+    }
+
+    .countdown-small {
+        font-size: 11px;
+        padding: 6px 12px;
     }
 }
