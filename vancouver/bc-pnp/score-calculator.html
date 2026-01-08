@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="BC PNP Skills Immigration Score Calculator. Calculate your points for British Columbia Provincial Nominee Program based on work experience, education, language, wage, and employment location.">
+    <meta name="keywords"
+        content="BC PNP, Provincial Nominee Program, BC immigration, Canada immigration, points calculator, skills immigration">
+    <meta name="author" content="Suraj Saini">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="BC PNP Skills Immigration Score Calculator">
+    <meta property="og:description"
+        content="Calculate your BC PNP Skills Immigration score based on Human Capital and Economic factors.">
+    <meta property="og:type" content="website">
+    <title>BC PNP Skills Immigration Score Calculator</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>BC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="score-calculator.css">
+</head>
+
+<body>
+    <!-- Sticky Score Bar - Appears when scrolling -->
+    <div class="sticky-score-bar" id="stickyScoreBar">
+        <div class="sticky-score-content">
+            <div class="sticky-total">
+                <span class="sticky-total-label">Score:</span>
+                <span class="sticky-total-value" id="stickyTotalScore">0</span>
+                <span class="sticky-total-max">/ 200</span>
+            </div>
+            <div class="sticky-breakdown">
+                <div class="sticky-breakdown-item">
+                    <span class="sticky-breakdown-label">HC:</span>
+                    <span class="sticky-breakdown-value" id="stickyHumanCapital">0</span>
+                </div>
+                <div class="sticky-breakdown-item">
+                    <span class="sticky-breakdown-label">EF:</span>
+                    <span class="sticky-breakdown-value" id="stickyEconomic">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <span class="logo-icon">BC</span>
+                    <span>BC PNP Score Calculator</span>
+                </a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">Dark Mode</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>BC PNP Skills Immigration Score Calculator</h1>
+            <p class="hero-subtitle">Calculate your potential score for the BC Provincial Nominee Program Skills
+                Immigration stream. Maximum possible score is 200 points.</p>
+        </div>
+    </section>
+
+    <!-- Score Display -->
+    <div class="container">
+        <div class="score-display">
+            <div class="score-label">Your Total Score</div>
+            <div class="score-value" id="totalScore">0</div>
+            <div class="score-max">/ 200 points</div>
+            <div class="score-breakdown">
+                <div class="breakdown-item">
+                    <div class="breakdown-label">Human Capital</div>
+                    <div class="breakdown-value" id="humanCapitalScore">0</div>
+                    <div class="breakdown-max">/ 120 max</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-label">Economic</div>
+                    <div class="breakdown-value" id="economicScore">0</div>
+                    <div class="breakdown-max">/ 80 max</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculator -->
+    <section class="calculator-section">
+        <div class="container">
+            <!-- Human Capital Factors -->
+            <div class="section-card">
+                <div class="section-header" onclick="toggleSection('humanCapital')">
+                    <div class="section-title">
+                        <span class="section-icon">HC</span>
+                        <h2>Human Capital Factors</h2>
+                    </div>
+                    <div class="section-score">
+                        <span id="humanCapitalLabel">0</span> / 120 pts
+                    </div>
+                </div>
+                <div class="section-body" id="humanCapitalBody">
+                    <!-- Work Experience -->
+                    <div class="factor-group">
+                        <div class="factor-header">
+                            <div class="factor-title">
+                                <h3>Directly Related Work Experience</h3>
+                                <span class="info-icon">i
+                                    <span class="tooltip">"Directly related" means work in the same NOC (National
+                                        Occupational Classification) as your B.C. job offer. Part-time work counts as
+                                        50% of duration.</span>
+                                </span>
+                            </div>
+                            <span class="factor-points">Max 40 pts</span>
+                        </div>
+                        <div class="select-wrapper">
+                            <select id="workExperience" onchange="calculateScore()">
+                                <option value="0">Select your experience...</option>
+                                <option value="0">0 years (0 points)</option>
+                                <option value="1">Less than 1 year (1 point)</option>
+                                <option value="4">1 - 2 years (4 points)</option>
+                                <option value="8">2 - 3 years (8 points)</option>
+                                <option value="12">3 - 4 years (12 points)</option>
+                                <option value="16">4 - 5 years (16 points)</option>
+                                <option value="20">5+ years (20 points)</option>
+                            </select>
+                        </div>
+                        <div class="bonus-options">
+                            <div class="bonus-label">Additional Bonuses</div>
+                            <label class="option-item" id="canadaExpItem">
+                                <input type="checkbox" id="canadaExperience" onchange="calculateScore()">
+                                <span class="option-text">At least 1 year of directly related experience in
+                                    Canada</span>
+                                <span class="option-points">+10 pts</span>
+                            </label>
+                            <label class="option-item" id="bcWorkingItem">
+                                <input type="checkbox" id="bcWorking" onchange="calculateScore()">
+                                <span class="option-text">Currently working full-time in B.C. for the employer in the
+                                    occupation identified in registration</span>
+                                <span class="option-points">+10 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="factor-group">
+                        <div class="factor-header">
+                            <div class="factor-title">
+                                <h3>Highest Level of Education</h3>
+                                <span class="info-icon">i
+                                    <span class="tooltip">Points are awarded for the highest level of education
+                                        successfully completed. Only one education level bonus can be claimed.</span>
+                                </span>
+                            </div>
+                            <span class="factor-points">Max 40 pts</span>
+                        </div>
+                        <div class="select-wrapper">
+                            <select id="education" onchange="calculateScore()">
+                                <option value="0">Select your education level...</option>
+                                <option value="0">High School or less (0 points)</option>
+                                <option value="5">Post-secondary Diploma/Certificate - Non-Trades (5 points)</option>
+                                <option value="5">Post-secondary Diploma/Certificate - Trades (5 points)</option>
+                                <option value="5">Associate Degree (5 points)</option>
+                                <option value="15">Bachelor's Degree (15 points)</option>
+                                <option value="15">Post-Graduate Certificate or Diploma (15 points)</option>
+                                <option value="22">Master's Degree (22 points)</option>
+                                <option value="27">Doctoral Degree (27 points)</option>
+                            </select>
+                        </div>
+                        <div class="bonus-options">
+                            <div class="bonus-label">Education Location (select one)</div>
+                            <label class="option-item" id="bcEducationItem">
+                                <input type="radio" name="educationLocation" value="8" id="bcEducation"
+                                    onchange="calculateScore()">
+                                <span class="option-text">Post-secondary education completed in B.C.</span>
+                                <span class="option-points">+8 pts</span>
+                            </label>
+                            <label class="option-item" id="canadaEducationItem">
+                                <input type="radio" name="educationLocation" value="6" id="canadaEducation"
+                                    onchange="calculateScore()">
+                                <span class="option-text">Post-secondary education completed in Canada (outside
+                                    B.C.)</span>
+                                <span class="option-points">+6 pts</span>
+                            </label>
+                            <label class="option-item" id="noEducationBonusItem">
+                                <input type="radio" name="educationLocation" value="0" id="noEducationBonus"
+                                    onchange="calculateScore()" checked>
+                                <span class="option-text">No location bonus / Education outside Canada</span>
+                                <span class="option-points">+0 pts</span>
+                            </label>
+                        </div>
+                        <div class="bonus-options" style="margin-top: 10px;">
+                            <div class="bonus-label">Professional Designation</div>
+                            <label class="option-item" id="professionalDesignationItem">
+                                <input type="checkbox" id="professionalDesignation" onchange="calculateScore()">
+                                <span class="option-text">Eligible professional designation in B.C. (e.g.,
+                                    SkilledTradesBC, ECE Registry)</span>
+                                <span class="option-points">+5 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Language -->
+                    <div class="factor-group">
+                        <div class="factor-header">
+                            <div class="factor-title">
+                                <h3>Language Proficiency (CLB Level)</h3>
+                                <span class="info-icon">i
+                                    <span class="tooltip">CLB (Canadian Language Benchmarks) score based on language
+                                        test results. Must have valid IELTS, CELPIP, TEF, or TCF results.</span>
+                                </span>
+                            </div>
+                            <span class="factor-points">Max 40 pts</span>
+                        </div>
+                        <div class="select-wrapper">
+                            <select id="language" onchange="calculateScore()">
+                                <option value="0">Select your CLB level...</option>
+                                <option value="0">Below CLB 4 (0 points)</option>
+                                <option value="5">CLB 4 (5 points)</option>
+                                <option value="10">CLB 5 (10 points)</option>
+                                <option value="15">CLB 6 (15 points)</option>
+                                <option value="20">CLB 7 (20 points)</option>
+                                <option value="25">CLB 8 (25 points)</option>
+                                <option value="30">CLB 9+ (30 points)</option>
+                            </select>
+                        </div>
+                        <div class="bonus-options">
+                            <div class="bonus-label">Bilingual Bonus</div>
+                            <label class="option-item" id="bilingualItem">
+                                <input type="checkbox" id="bilingual" onchange="calculateScore()">
+                                <span class="option-text">Proficiency in both English and French (CLB 4+ in all 4
+                                    competencies for both languages)</span>
+                                <span class="option-points">+10 pts</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Economic Factors -->
+            <div class="section-card">
+                <div class="section-header" onclick="toggleSection('economic')">
+                    <div class="section-title">
+                        <span class="section-icon">EF</span>
+                        <h2>Economic Factors</h2>
+                    </div>
+                    <div class="section-score">
+                        <span id="economicLabel">0</span> / 80 pts
+                    </div>
+                </div>
+                <div class="section-body" id="economicBody">
+                    <!-- Hourly Wage -->
+                    <div class="factor-group">
+                        <div class="factor-header">
+                            <div class="factor-title">
+                                <h3>Hourly Wage of B.C. Job Offer</h3>
+                                <span class="info-icon">i
+                                    <span class="tooltip">Hourly wage is calculated as: (Annual Wage / 52 weeks) /
+                                        (Hours per week, max 40). Points decrease by 1 for every $1 decrease from
+                                        $70.</span>
+                                </span>
+                            </div>
+                            <span class="factor-points">Max 55 pts</span>
+                        </div>
+                        <div class="wage-calculator">
+                            <div class="wage-tabs">
+                                <button class="wage-tab active" onclick="switchWageTab('hourly')" id="hourlyTab">Hourly
+                                    Wage</button>
+                                <button class="wage-tab" onclick="switchWageTab('annual')" id="annualTab">Calculate
+                                    from Annual</button>
+                            </div>
+                            <div id="hourlyInput" class="wage-input-group">
+                                <div class="wage-input-wrapper">
+                                    <span>$</span>
+                                    <input type="number" id="hourlyWage" placeholder="Enter hourly wage (e.g., 35)"
+                                        min="0" max="200" step="0.01" oninput="calculateScore()">
+                                </div>
+                            </div>
+                            <div id="annualInput" class="annual-fields">
+                                <div class="annual-field-row">
+                                    <label>Annual Salary</label>
+                                    <div class="wage-input-wrapper">
+                                        <span>$</span>
+                                        <input type="number" id="annualSalary" placeholder="e.g., 70000" min="0"
+                                            oninput="calculateHourlyFromAnnual()">
+                                    </div>
+                                </div>
+                                <div class="annual-field-row">
+                                    <label>Hours per Week</label>
+                                    <input type="number" id="hoursPerWeek" placeholder="Max 40" min="1" max="40"
+                                        value="40" oninput="calculateHourlyFromAnnual()">
+                                </div>
+                                <div class="hourly-result" id="hourlyResult" style="display: none;">
+                                    Calculated Hourly Wage: <strong id="calculatedHourly">$0.00</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wage-points-display">
+                            Wage Points: <strong id="wagePointsDisplay">0</strong> / 55
+                        </div>
+                    </div>
+
+                    <!-- Employment Area -->
+                    <div class="factor-group">
+                        <div class="factor-header">
+                            <div class="factor-title">
+                                <h3>Area of Employment within B.C.</h3>
+                                <span class="info-icon">i
+                                    <span class="tooltip">Points are based on where you will be working in B.C. Working
+                                        outside Metro Vancouver earns additional points.</span>
+                                </span>
+                            </div>
+                            <span class="factor-points">Max 25 pts</span>
+                        </div>
+                        <div class="select-wrapper">
+                            <select id="employmentArea" onchange="calculateScore()">
+                                <option value="0">Select employment area...</option>
+                                <option value="0">Area 1: Metro Vancouver Regional District (0 points)</option>
+                                <option value="5">Area 2: Squamish, Abbotsford, Agassiz, Mission, Chilliwack (5 points)
+                                </option>
+                                <option value="15">Area 3: All other areas of B.C. (15 points)</option>
+                            </select>
+                        </div>
+                        <div class="bonus-options">
+                            <div class="bonus-label">Regional Bonus (select one - cannot claim both)</div>
+                            <label class="option-item" id="regionalExpItem">
+                                <input type="radio" name="regionalBonus" value="10" id="regionalExperience"
+                                    onchange="calculateScore()">
+                                <span class="option-text">Regional Experience: 1+ year of work experience outside Metro
+                                    Vancouver Regional District</span>
+                                <span class="option-points">+10 pts</span>
+                            </label>
+                            <label class="option-item" id="regionalAlumniItem">
+                                <input type="radio" name="regionalBonus" value="10" id="regionalAlumni"
+                                    onchange="calculateScore()">
+                                <span class="option-text">Regional Alumni: Graduated from a post-secondary institution
+                                    outside Metro Vancouver Regional District</span>
+                                <span class="option-points">+10 pts</span>
+                            </label>
+                            <label class="option-item" id="noRegionalBonusItem">
+                                <input type="radio" name="regionalBonus" value="0" id="noRegionalBonus"
+                                    onchange="calculateScore()" checked>
+                                <span class="option-text">No regional bonus</span>
+                                <span class="option-points">+0 pts</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="disclaimer">
+                <h4>Important Notes</h4>
+                <p>Please be aware of the following:</p>
+                <ul>
+                    <li>A <strong>valid job offer from a B.C. employer</strong> is mandatory for most BC PNP Skills
+                        Immigration streams.</li>
+                    <li>Your score alone does <strong>not guarantee an invitation</strong> to apply. Invitations depend
+                        on draw score thresholds.</li>
+                    <li>This calculator is for <strong>estimation purposes only</strong>. Always verify with official BC
+                        PNP guidelines.</li>
+                    <li>Part-time work experience counts as <strong>50% of the duration</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>BC PNP Skills Immigration Score Calculator</p>
+
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">^</button>
+
+    <script src="score-calculator.js"></script>
+</body>
+
+</html>
