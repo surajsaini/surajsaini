@@ -58,9 +58,6 @@ header {
     background: linear-gradient(135deg, var(--primary-blue) 0%, #004080 50%, #00264d 100%);
     color: white;
     padding: 20px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
     box-shadow: var(--shadow-lg);
 }
 
@@ -460,7 +457,7 @@ header {
 }
 
 .factor-points {
-    background: var(--light-gold);
+    background: var(--light-blue);
     color: var(--primary-blue);
     padding: 6px 14px;
     border-radius: 20px;
