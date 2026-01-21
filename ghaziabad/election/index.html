@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghaziabad Elections - Election Information Portal</title>
+    <meta name="description"
+        content="Complete election information for Ghaziabad including General, Assembly and Local Body elections. Find results, constituency details and upcoming election dates.">
+    <meta name="keywords"
+        content="Ghaziabad elections, Lok Sabha, Vidhan Sabha, Municipal Corporation, voting, election results">
+    <meta name="author" content="Suraj Saini">
+    <link rel="canonical" href="https://surajsaini.com/ghaziabad/election/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ghaziabad Elections - Election Information Portal">
+    <meta property="og:description"
+        content="Complete election information for Ghaziabad including General, Assembly and Local Body elections.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://surajsaini.com/ghaziabad/election/">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <h1 class="site-title">
+                <a href="index.html">Ghaziabad Elections</a>
+            </h1>
+            <button class="theme-toggle" aria-label="Toggle theme">
+                <span class="theme-toggle-icon">☀️</span>
+                <span class="theme-toggle-text">Light</span>
+            </button>
+        </div>
+    </header>
+    <nav class="nav">
+        <ul class="nav-list container">
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li><a href="general/index.html" class="nav-link">General</a></li>
+            <li><a href="assembly/index.html" class="nav-link">Assembly</a></li>
+            <li><a href="local-body/index.html" class="nav-link">Local Body</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main">
+        <div class="container">
+
+            <!-- Upcoming Elections Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Upcoming Elections</h2>
+                    <p class="section-description">Elections scheduled for Ghaziabad in the near future.</p>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card card-highlight">
+                        <span class="card-badge">Upcoming</span>
+                        <div class="card-header">
+                            <h3 class="card-title">Uttar Pradesh Assembly Elections 2027</h3>
+                            <p class="card-subtitle">Vidhan Sabha Elections</p>
+                        </div>
+                        <div class="card-body">
+                            <p>Expected in <strong>February - March 2027</strong>. Elections will be held for all 403
+                                assembly seats in Uttar Pradesh, including 6 constituencies in Ghaziabad district.</p>
+                            <p class="text-muted">Exact dates to be announced by Election Commission of India.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- General Elections Section -->
+            <section class="section" id="general">
+                <div class="section-header">
+                    <h2 class="section-title">General Elections (Lok Sabha)</h2>
+                    <p class="section-description">National-level elections to choose a Member of Parliament (MP) who
+                        represents Ghaziabad in the Lok Sabha.</p>
+                </div>
+
+                <div class="constituency-grid">
+                    <!-- Ghaziabad Lok Sabha -->
+                    <div class="constituency-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h4>Ghaziabad Lok Sabha</h4>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="details-content">
+                                <p class="constituency-info">Constituency No. 12 | <a href="general/index.html">View All
+                                        Results</a></p>
+
+                                <h5 class="election-year-header">2024 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Atul Garg (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>8,54,170 Votes</span>
+                                        <span>58.09%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Dolly Sharma (INC)</span>
+                                    <div class="result-stats">
+                                        <span>5,17,205 Votes</span>
+                                        <span>35.17%</span>
+                                    </div>
+                                </div>
+
+                                <h5 class="election-year-header">2019 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Gen. V.K. Singh (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>9,44,503 Votes</span>
+                                        <span>61.93%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Suresh Bansal (SP)</span>
+                                    <div class="result-stats">
+                                        <span>4,43,003 Votes</span>
+                                        <span>29.06%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Assembly Elections Section -->
+            <section class="section" id="assembly">
+                <div class="section-header">
+                    <h2 class="section-title">Assembly Elections (Vidhan Sabha)</h2>
+                    <p class="section-description">State-level elections to elect Members of Legislative Assembly (MLA)
+                        to the Uttar Pradesh Vidhan Sabha.</p>
+                </div>
+
+                <div class="constituency-grid">
+                    <!-- Ghaziabad -->
+                    <div class="constituency-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h4>Ghaziabad</h4>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="details-content">
+                                <p class="constituency-info">Constituency No. 56 | <a
+                                        href="assembly/index.html#ghaziabad">View
+                                        All Results</a></p>
+
+                                <h5 class="election-year-header">2024 By-Election</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Sanjeev Sharma (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>96,946 Votes</span>
+                                        <span>62.99%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Singh Raj Jatav (SP)</span>
+                                    <div class="result-stats">
+                                        <span>27,595 Votes</span>
+                                        <span>17.93%</span>
+                                    </div>
+                                </div>
+
+                                <h5 class="election-year-header">2022 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Atul Garg (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>1,50,205 Votes</span>
+                                        <span>61.37%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Vishal Verma (SP)</span>
+                                    <div class="result-stats">
+                                        <span>44,668 Votes</span>
+                                        <span>18.25%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Loni -->
+                    <div class="constituency-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h4>Loni</h4>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="details-content">
+                                <p class="constituency-info">Constituency No. 53 | <a href="assembly/#loni">View All
+                                        Results</a></p>
+
+                                <h5 class="election-year-header">2022 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Nand Kishor Gurjar (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>1,27,410 Votes</span>
+                                        <span>40.44%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Madan Bhaiya (RLD)</span>
+                                    <div class="result-stats">
+                                        <span>1,18,734 Votes</span>
+                                        <span>37.68%</span>
+                                    </div>
+                                </div>
+
+                                <h5 class="election-year-header">2017 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Nand Kishor Gurjar (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>1,13,088 Votes</span>
+                                        <span>—</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Zakir Ali (BSP)</span>
+                                    <div class="result-stats">
+                                        <span>70,275 Votes</span>
+                                        <span>—</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Muradnagar -->
+                    <div class="constituency-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h4>Muradnagar</h4>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="details-content">
+                                <p class="constituency-info">Constituency No. 54 | <a href="assembly/#muradnagar">View
+                                        All Results</a></p>
+
+                                <h5 class="election-year-header">2022 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Ajit Pal Tyagi (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>1,69,290 Votes</span>
+                                        <span>61.63%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Surendra Kumar Munni (RLD)</span>
+                                    <div class="result-stats">
+                                        <span>72,195 Votes</span>
+                                        <span>26.28%</span>
+                                    </div>
+                                </div>
+
+                                <h5 class="election-year-header">2017 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Ajit Pal Tyagi (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>1,40,759 Votes</span>
+                                        <span>55.52%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Sudhan Kumar (BSP)</span>
+                                    <div class="result-stats">
+                                        <span>51,147 Votes</span>
+                                        <span>20.17%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sahibabad -->
+                    <div class="constituency-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h4>Sahibabad</h4>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="details-content">
+                                <p class="constituency-info">Constituency No. 55 | <a href="assembly/#sahibabad">View
+                                        All Results</a></p>
+
+                                <h5 class="election-year-header">2022 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Sunil Kumar Sharma (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>3,22,882 Votes</span>
+                                        <span>67.03%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Amarpal Sharma (SP)</span>
+                                    <div class="result-stats">
+                                        <span>1,08,047 Votes</span>
+                                        <span>22.43%</span>
+                                    </div>
+                                </div>
+
+                                <h5 class="election-year-header">2017 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Sunil Kumar Sharma (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>2,62,741 Votes</span>
+                                        <span>61.7%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Amarpal Sharma (INC)</span>
+                                    <div class="result-stats">
+                                        <span>1,12,056 Votes</span>
+                                        <span>26.31%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modinagar -->
+                    <div class="constituency-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h4>Modinagar</h4>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="details-content">
+                                <p class="constituency-info"><a href="assembly/index.html#modinagar">View All
+                                        Results</a></p>
+
+                                <h5 class="election-year-header">2022 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Manju Shiwach (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>1,13,349 Votes</span>
+                                        <span>50.63%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Sudesh Sharma (RLD)</span>
+                                    <div class="result-stats">
+                                        <span>78,730 Votes</span>
+                                        <span>35.17%</span>
+                                    </div>
+                                </div>
+
+                                <h5 class="election-year-header">2017 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Manju Shiwach (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>1,08,631 Votes</span>
+                                        <span>50.32%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Wahab Chaudhary (BSP)</span>
+                                    <div class="result-stats">
+                                        <span>42,049 Votes</span>
+                                        <span>19.48%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dholana -->
+                    <div class="constituency-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h4>Dholana</h4>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="details-content">
+                                <p class="constituency-info">Constituency No. 58 | <a href="assembly/#dholana">View All
+                                        Results</a></p>
+
+                                <h5 class="election-year-header">2022 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Dharmesh Singh Tomar (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>1,25,028 Votes</span>
+                                        <span>44.65%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Aslam Choudhary (SP)</span>
+                                    <div class="result-stats">
+                                        <span>1,12,400 Votes</span>
+                                        <span>40.14%</span>
+                                    </div>
+                                </div>
+
+                                <h5 class="election-year-header">2017 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Aslam Choudhary (BSP)</span>
+                                    <div class="result-stats">
+                                        <span>88,580 Votes</span>
+                                        <span>34.9%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Ramesh Chand Tomar (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>85,004 Votes</span>
+                                        <span>33.49%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Local Body Elections Section -->
+            <section class="section" id="local-body">
+                <div class="section-header">
+                    <h2 class="section-title">Local Body Elections</h2>
+                    <p class="section-description">Elections for city management including Mayor and Ward Councilors for
+                        Ghaziabad Municipal Corporation.</p>
+                </div>
+
+                <div class="constituency-grid">
+                    <!-- Mayor Elections -->
+                    <div class="constituency-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h4>Ghaziabad Mayor</h4>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-details">
+                            <div class="details-content">
+                                <p class="constituency-info">Current Mayor: Sunita Dayal | <a href="local-body/">View
+                                        All Results</a></p>
+
+                                <h5 class="election-year-header">2023 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Sunita Dayal (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>3,50,905 Votes</span>
+                                        <span>58.12%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Nisara Khan (BSP)</span>
+                                    <div class="result-stats">
+                                        <span>63,249 Votes</span>
+                                        <span>10.48%</span>
+                                    </div>
+                                </div>
+
+                                <h5 class="election-year-header">2017 Results</h5>
+                                <div class="result-row winner">
+                                    <span class="result-name">Asha Sharma (BJP)</span>
+                                    <div class="result-stats">
+                                        <span>2,82,793 Votes</span>
+                                        <span>49.86%</span>
+                                    </div>
+                                </div>
+                                <div class="result-row runner-up">
+                                    <span class="result-name">Dolly Sharma (INC)</span>
+                                    <div class="result-stats">
+                                        <span>1,19,118 Votes</span>
+                                        <span>21.00%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p class="footer-text">Election information for Ghaziabad residents</p>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="general/index.html" class="footer-link">General Elections</a>
+                <a href="assembly/index.html" class="footer-link">Assembly Elections</a>
+                <a href="local-body/index.html" class="footer-link">Local Body Elections</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
