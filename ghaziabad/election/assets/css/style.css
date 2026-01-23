@@ -647,7 +647,7 @@ main {
   }
 }
 
-/* Winner Indicator */
+/* Winner Indicator 
 .winner {
   position: relative;
 }
@@ -658,7 +658,7 @@ main {
   margin-left: var(--spacing-sm);
   color: var(--accent-secondary);
   font-weight: bold;
-}
+} */
 
 /* Skip Link for Accessibility */
 .skip-link {
