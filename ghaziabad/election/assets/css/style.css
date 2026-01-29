@@ -610,8 +610,8 @@ main {
   }
 }
 
-/* Mobile table optimizations 
-@media (max-width: 639px) {
+/* Mobile table optimizations */
+@media (max-width: 750px) {
   .results-table {
     font-size: 0.8125rem;
     min-width: 100%;
@@ -646,7 +646,7 @@ main {
     font-size: 1rem;
   }
 }
-  */
+
 
 /* Winner Indicator 
 .winner {
