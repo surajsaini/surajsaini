@@ -12,4 +12,4 @@ User-agent: Google-Extended
 Allow: /
 
 # Sitemap
-Sitemap: https://surajsaini.com/vancouver/world-cup-2026/sitemap.xml
+Sitemap: https://surajsaini.com/sitemap.xml
