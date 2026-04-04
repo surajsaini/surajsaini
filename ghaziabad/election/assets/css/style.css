@@ -393,31 +393,6 @@ main {
   margin-bottom: var(--spacing-sm);
 }
 
-/* Election Results Table */
-.results-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: var(--spacing-md);
-  font-size: 0.875rem;
-}
-
-.results-table th,
-.results-table td {
-  padding: var(--spacing-sm) var(--spacing-md);
-  text-align: left;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.results-table th {
-  background-color: var(--bg-secondary);
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.results-table tr:hover {
-  background-color: var(--bg-card-hover);
-}
-
 /* Party Badge */
 .party-badge {
   display: inline-block;
@@ -452,34 +427,6 @@ main {
   background-color: var(--ind-color);
 }
 
-/* Result Card (for compact display) */
-.result-mini {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--spacing-sm) 0;
-  border-bottom: 1px solid var(--border-subtle);
-  font-size: 0.875rem;
-}
-
-.result-mini:last-child {
-  border-bottom: none;
-}
-
-.result-mini-party {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-}
-
-.result-mini-votes {
-  color: var(--text-muted);
-}
-
-.result-mini-percent {
-  font-weight: 600;
-}
-
 /* Constituency Card */
 .constituency-card {
   background-color: var(--bg-card);
@@ -500,30 +447,8 @@ main {
   margin-bottom: 0;
 }
 
-.constituency-number {
-  color: var(--text-muted);
-  font-size: 0.875rem;
-}
-
 .constituency-body {
   padding: var(--spacing-lg);
-}
-
-/* Election Year Section */
-.election-year {
-  margin-bottom: var(--spacing-lg);
-}
-
-.election-year:last-child {
-  margin-bottom: 0;
-}
-
-.election-year-title {
-  font-size: 1rem;
-  color: var(--accent-primary);
-  margin-bottom: var(--spacing-sm);
-  padding-bottom: var(--spacing-xs);
-  border-bottom: 1px dashed var(--border-subtle);
 }
 
 /* Info Box */
@@ -570,65 +495,11 @@ main {
 }
 
 /* Utility Classes */
-.text-center {
-  text-align: center;
-}
-
 .text-muted {
   color: var(--text-muted);
 }
 
-.mt-1 {
-  margin-top: var(--spacing-md);
-}
-
-.mt-2 {
-  margin-top: var(--spacing-lg);
-}
-
-.mb-1 {
-  margin-bottom: var(--spacing-md);
-}
-
-.mb-2 {
-  margin-bottom: var(--spacing-lg);
-}
-
-/* Responsive Table Wrapper */
-.table-responsive {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  max-width: 100%;
-  margin: 0 calc(-1 * var(--spacing-md));
-  padding: 0 var(--spacing-md);
-}
-
-@media (min-width: 640px) {
-  .table-responsive {
-    margin: 0;
-    padding: 0;
-  }
-}
-
-/* Mobile table optimizations */
 @media (max-width: 750px) {
-  .results-table {
-    font-size: 0.8125rem;
-    min-width: 100%;
-  }
-
-  .results-table th,
-  .results-table td {
-    padding: var(--spacing-xs) var(--spacing-sm);
-    word-break: break-word;
-  }
-
-  .results-table th:nth-child(2),
-  .results-table td:nth-child(2) {
-    max-width: 120px;
-    white-space: normal;
-  }
-
   .party-badge {
     font-size: 0.625rem;
     padding: 2px 4px;
@@ -800,4 +671,158 @@ main {
 
 .result-stats span {
   display: block;
+}
+
+/* Collapsible Election Result Tiles */
+.election-result-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+.election-result-card {
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+}
+
+.election-result-card.winner {
+  border-left: 4px solid var(--accent-secondary);
+}
+
+.election-result-card.runner-up {
+  border-left: 4px solid var(--accent-warning);
+}
+
+.election-result-label {
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.election-result-candidate {
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.election-result-candidate .party-badge {
+  margin-left: var(--spacing-xs);
+  vertical-align: middle;
+}
+
+.election-result-meta {
+  margin-bottom: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.election-result-stats {
+  margin-bottom: 0;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+@media (min-width: 700px) {
+  .election-result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Ward Parshad Tiles */
+.ward-tile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.ward-tile {
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.ward-tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+}
+
+.ward-tile-header {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ward-tile-number {
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.ward-tile-name {
+  margin-bottom: 0;
+  font-size: 1.0625rem;
+  color: var(--text-primary);
+}
+
+.ward-tile-results {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.ward-tile-result {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.ward-tile-label {
+  margin-bottom: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.ward-tile-value {
+  margin-bottom: 0;
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.ward-tile-value .party-badge {
+  margin-left: var(--spacing-xs);
+  vertical-align: middle;
+}
+
+@media (min-width: 700px) {
+  .ward-tile-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .ward-tile-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
