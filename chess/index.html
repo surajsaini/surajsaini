@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A serverless peer-to-peer multiplayer chess game for GitHub Pages.">
+  <title>Peer Chess</title>
+  <link rel="icon" href="data:,">
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
+  <script defer src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <main class="app-shell">
+    <section class="game-surface" aria-label="Online chess game">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Peer-to-peer chess</p>
+          <h1>Peer Chess</h1>
+        </div>
+        <div id="roleBadge" class="role-badge">Starting</div>
+      </header>
+
+      <div id="statusBar" class="status-bar" role="status" aria-live="polite">
+        Preparing game...
+      </div>
+
+      <div class="play-layout">
+        <section class="board-section" aria-label="Chessboard">
+          <div id="board" class="chess-board"></div>
+        </section>
+
+        <aside class="side-panel" aria-label="Game details">
+          <section class="panel-section">
+            <h2>Connection</h2>
+            <div class="connection-state">
+              <span id="connectionDot" class="state-dot" aria-hidden="true"></span>
+              <span id="connectionText">Creating room...</span>
+            </div>
+
+            <div id="invitePanel" class="invite-panel">
+              <label for="inviteLink">Invite link</label>
+              <div class="copy-row">
+                <input id="inviteLink" type="text" readonly value="" placeholder="Room link appears here">
+                <button id="copyInviteButton" type="button" disabled>Copy</button>
+              </div>
+              <p id="copyMessage" class="hint" aria-live="polite"></p>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <h2>Move History</h2>
+            <ol id="moveList" class="move-list" aria-label="Move history"></ol>
+          </section>
+
+          <section class="panel-section chat-panel">
+            <h2>Chat</h2>
+            <div id="chatMessages" class="chat-messages" aria-live="polite">
+              <p class="muted">Messages appear after the peer connection opens.</p>
+            </div>
+            <form id="chatForm" class="chat-form">
+              <input id="chatInput" type="text" maxlength="300" autocomplete="off" placeholder="Message" disabled>
+              <button id="sendChatButton" type="submit" disabled>Send</button>
+            </form>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div id="lobbyOverlay" class="overlay" hidden>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="lobbyTitle">
+      <p class="eyebrow">Room ready</p>
+      <h2 id="lobbyTitle">Invite a friend</h2>
+      <p id="lobbyStatus" class="dialog-status">Waiting for opponent...</p>
+      <div class="copy-row">
+        <input id="lobbyInviteLink" type="text" readonly value="">
+        <button id="copyLobbyButton" type="button" disabled>Copy Invite Link</button>
+      </div>
+      <p id="lobbyCopyMessage" class="hint" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <div id="promotionOverlay" class="overlay" hidden>
+    <div class="dialog promotion-dialog" role="dialog" aria-modal="true" aria-labelledby="promotionTitle">
+      <h2 id="promotionTitle">Promote pawn</h2>
+      <div class="promotion-grid" aria-label="Choose promotion piece">
+        <button type="button" data-promotion="q">Queen</button>
+        <button type="button" data-promotion="r">Rook</button>
+        <button type="button" data-promotion="b">Bishop</button>
+        <button type="button" data-promotion="n">Knight</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
