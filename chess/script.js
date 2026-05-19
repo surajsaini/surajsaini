@@ -9,7 +9,7 @@ const isOwnHostReload = requestedRoom && historyState.peerChessHostRoom === requ
 const isJoiner = requestedRoom.length > 0 && !isOwnHostReload;
 
 const PIECE_THEME =
-  "https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/img/chesspieces/wikipedia/{piece}.png";
+  "https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png";
 
 const state = {
   peer: null,
@@ -21,7 +21,8 @@ const state = {
   inviteUrl: "",
   connected: false,
   pendingPromotion: null,
-  lastMove: null
+  lastMove: null,
+  selectedSquare: null
 };
 
 const els = {};
@@ -65,13 +66,10 @@ function cacheElements() {
 
 function setupBoard() {
   state.board = Chessboard("board", {
-    draggable: true,
+    draggable: false,
     position: "start",
     orientation: isJoiner ? "black" : "white",
-    pieceTheme: PIECE_THEME,
-    onDragStart,
-    onDrop,
-    onSnapEnd
+    pieceTheme: PIECE_THEME
   });
 
   window.addEventListener("resize", debounce(() => state.board.resize(), 120));
@@ -81,6 +79,13 @@ function bindUi() {
   els.copyInviteButton.addEventListener("click", () => copyInviteLink(els.copyMessage));
   els.copyLobbyButton.addEventListener("click", () => copyInviteLink(els.lobbyCopyMessage));
   els.chatForm.addEventListener("submit", handleChatSubmit);
+
+  els.board.addEventListener("click", (e) => {
+    const square = getSquareFromEvent(e);
+    if (square) {
+      handleSquareClick(square);
+    }
+  });
 
   document.querySelectorAll("[data-promotion]").forEach((button) => {
     button.addEventListener("click", () => completePromotion(button.dataset.promotion));
@@ -213,40 +218,52 @@ function handleIncomingData(data) {
   }
 }
 
-function onDragStart(source, piece) {
+function handleSquareClick(square) {
   if (!state.connected || state.game.game_over()) {
-    return false;
+    return;
   }
 
   if (!isMyTurn()) {
-    return false;
+    return;
   }
 
-  if (!piece || piece.charAt(0) !== state.myColor) {
-    return false;
+  const pieceOnSquare = state.game.get(square);
+
+  if (state.selectedSquare) {
+    if (state.selectedSquare === square) {
+      state.selectedSquare = null;
+      applyMoveHighlight();
+      return;
+    }
+
+    if (pieceOnSquare && pieceOnSquare.color === state.myColor) {
+      state.selectedSquare = square;
+      applyMoveHighlight();
+      return;
+    }
+
+    const moveRequest = { from: state.selectedSquare, to: square, promotion: "q" };
+    const moves = state.game.moves({ verbose: true });
+    const isLegal = moves.some((m) => m.from === moveRequest.from && m.to === moveRequest.to);
+
+    if (isLegal) {
+      if (needsPromotionChoice(state.selectedSquare, square)) {
+        state.pendingPromotion = { from: state.selectedSquare, to: square };
+        els.promotionOverlay.hidden = false;
+      } else {
+        makeLocalMove(moveRequest);
+        state.board.position(state.game.fen());
+      }
+    }
+    
+    state.selectedSquare = null;
+    applyMoveHighlight();
+  } else {
+    if (pieceOnSquare && pieceOnSquare.color === state.myColor) {
+      state.selectedSquare = square;
+      applyMoveHighlight();
+    }
   }
-
-  return true;
-}
-
-function onDrop(source, target) {
-  if (source === target) {
-    return "snapback";
-  }
-
-  if (needsPromotionChoice(source, target)) {
-    state.pendingPromotion = { from: source, to: target };
-    els.promotionOverlay.hidden = false;
-    return "snapback";
-  }
-
-  const move = makeLocalMove({ from: source, to: target, promotion: "q" });
-  return move ? undefined : "snapback";
-}
-
-function onSnapEnd() {
-  state.board.position(state.game.fen());
-  applyMoveHighlight();
 }
 
 function needsPromotionChoice(source, target) {
@@ -371,22 +388,27 @@ function renderMoveHistory() {
 
 function applyMoveHighlight() {
   document
-    .querySelectorAll(".highlight-from, .highlight-to")
-    .forEach((square) => square.classList.remove("highlight-from", "highlight-to"));
+    .querySelectorAll(".highlight-from, .highlight-to, .highlight-selected")
+    .forEach((square) => square.classList.remove("highlight-from", "highlight-to", "highlight-selected"));
 
-  if (!state.lastMove) {
-    return;
+  if (state.lastMove) {
+    const fromSquare = document.querySelector(`.square-${state.lastMove.from}`);
+    const toSquare = document.querySelector(`.square-${state.lastMove.to}`);
+
+    if (fromSquare) {
+      fromSquare.classList.add("highlight-from");
+    }
+
+    if (toSquare) {
+      toSquare.classList.add("highlight-to");
+    }
   }
 
-  const fromSquare = document.querySelector(`.square-${state.lastMove.from}`);
-  const toSquare = document.querySelector(`.square-${state.lastMove.to}`);
-
-  if (fromSquare) {
-    fromSquare.classList.add("highlight-from");
-  }
-
-  if (toSquare) {
-    toSquare.classList.add("highlight-to");
+  if (state.selectedSquare) {
+    const selectedSquareEl = document.querySelector(`.square-${state.selectedSquare}`);
+    if (selectedSquareEl) {
+      selectedSquareEl.classList.add("highlight-selected");
+    }
   }
 }
 
@@ -514,4 +536,13 @@ function debounce(fn, delay) {
     window.clearTimeout(timerId);
     timerId = window.setTimeout(() => fn(...args), delay);
   };
+}
+
+function getSquareFromEvent(e) {
+  const squareEl = e.target.closest('[class*="square-"]');
+  if (!squareEl) {
+    return null;
+  }
+  const match = squareEl.className.match(/square-([a-h][1-8])/);
+  return match ? match[1] : null;
 }

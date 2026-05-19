@@ -191,9 +191,22 @@ h2 {
   margin: 0 auto;
 }
 
+.chess-board [class*="square-"] {
+  cursor: pointer;
+}
+
+.chess-board img {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
 .highlight-from,
 .highlight-to {
   box-shadow: inset 0 0 0 4px rgb(233 185 73 / 78%);
+}
+
+.highlight-selected {
+  box-shadow: inset 0 0 0 4px rgb(79 209 165 / 78%);
 }
 
 .side-panel {
