@@ -149,6 +149,16 @@ nav a:hover {
     font-weight: 700;
 }
 
+.roster-announcement a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.roster-announcement a:hover {
+    opacity: 0.85;
+}
+
 /* Section Styles */
 section {
     padding: 60px 20px;
