@@ -196,6 +196,21 @@ h3 {
     text-align: center;
 }
 
+.match-result-small,
+.match-result-banner {
+    background: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.match-result-banner {
+    display: inline-block;
+    font-size: 18px;
+}
+
 /* Match Cards */
 .matches-grid {
     display: grid;
@@ -211,6 +226,10 @@ h3 {
     padding: 25px;
     transition: var(--transition);
     box-shadow: var(--shadow);
+}
+
+.match-card.completed {
+    border-color: var(--primary-color);
 }
 
 .match-card:hover {
