@@ -1,77 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Theme Toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+// This script is deferred, so the page controls are already available.
+const themeToggle = document.getElementById('themeToggle');
 
-    // Check for saved theme preference or use system preference
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeToggle.textContent = '☀️';
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        themeToggle.textContent = '🌙';
-    }
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
 
-    themeToggle.addEventListener('click', () => {
-        let theme = document.documentElement.getAttribute('data-theme');
-        if (theme === 'light') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-            themeToggle.textContent = '☀️';
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-            themeToggle.textContent = '🌙';
-        }
-    });
+const currentTheme = localStorage.getItem('theme');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+setTheme(currentTheme === 'dark' || (!currentTheme && prefersDarkScheme) ? 'dark' : 'light');
 
-    // Scroll to Top Button
-    const scrollToTopBtn = document.getElementById('scrollToTop');
+themeToggle.addEventListener('click', () => {
+    const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    setTheme(theme);
+    localStorage.setItem('theme', theme);
+});
 
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            scrollToTopBtn.classList.add('show');
-        } else {
-            scrollToTopBtn.classList.remove('show');
-        }
-    });
+const scrollToTopBtn = document.getElementById('scrollToTop');
 
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
+function updateScrollToTop() {
+    scrollToTopBtn.classList.toggle('show', window.scrollY > 300);
+}
 
-    // Add smooth scrolling to all internal links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+window.addEventListener('scroll', updateScrollToTop);
+updateScrollToTop();
 
-    // Accordion Functionality for Constituency Cards
-    const cardHeaders = document.querySelectorAll('.card-header');
-
-    cardHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const card = header.parentElement;
-
-            // Optional: Close other open cards
-            // document.querySelectorAll('.constituency-card.active').forEach(activeCard => {
-            //     if (activeCard !== card) {
-            //         activeCard.classList.remove('active');
-            //     }
-            // });
-
-            card.classList.toggle('active');
-        });
+scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
     });
 });
