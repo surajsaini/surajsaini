@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
 
 <head>
     <meta charset="UTF-8">
@@ -29,7 +29,7 @@
     <script src="election.js" defer></script>
 </head>
 
-<body>
+<body class="election-home">
     <!-- Header -->
     <header>
         <div class="container">
@@ -55,29 +55,25 @@
     <section class="hero">
         <div class="container">
             <h1>Vancouver Elections Hub</h1>
-            <p>Your complete guide to understanding and participating in Vancouver's democratic process. Explore
-                results, representatives, and upcoming election information.</p>
+            <p>Find Vancouver election candidates, voting information and results.</p>
         </div>
     </section>
 
-    <section id="upcoming">
+    <section id="upcoming" aria-labelledby="guides-title">
         <div class="container">
-            <h2>Upcoming Vancouver Election</h2>
-            <p><strong>Voting Day:</strong> October 17, 2026</p>
-            <p><a href="general-local-elections.html">Vancouver election 2026: dates, candidates, previous results and race outlook</a></p>
-
-            <ul>
-                <li>Election for 1 Mayor and 10 City Councillors</li>
-                <li>Election for 7 Park Board Commissioners</li>
-                <li>Election for 9 School Board Trustees</li>
-                <li>Includes 3 Capital Plan Questions</li>
-                <li>
-                    <a href="https://elections.bc.ca/local-elections/2026-general-local-elections/" target="_blank"
-                        rel="noopener">
-                        Visit the official Elections BC website
-                    </a>
-                </li>
-            </ul>
+            <h2 id="guides-title">2026 Vancouver election guides</h2>
+            <div class="election-page-links">
+                <a class="election-page-card" href="provincial-2026.html">
+                    <h3>Provincial election 2026</h3>
+                    <p>Candidates and voting information for 12 Vancouver ridings.</p>
+                    <span>View provincial guide <span aria-hidden="true">→</span></span>
+                </a>
+                <a class="election-page-card" href="municipal-2026.html">
+                    <h3>Municipal election 2026</h3>
+                    <p>Unofficial mayor, council, Park Board and School Board results.</p>
+                    <span>View municipal results <span aria-hidden="true">→</span></span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -373,6 +369,7 @@
             <h2>Vancouver Provincial Elections</h2>
             <p class="section-description">Provincial elections elect Members of the Legislative Assembly (MLAs) to
                 represent Vancouver ridings in the Legislative Assembly of British Columbia in Victoria.</p>
+            <p class="provincial-guide-link"><a href="provincial-2026.html">2026 Vancouver candidates &amp; voting information</a></p>
 
             <div class="constituency-grid">
                 <details class="constituency-card">
@@ -785,6 +782,7 @@
             <h2>Vancouver Municipal Local Elections</h2>
             <p class="section-description">Municipal elections occur every four years. The purpose is to elect the Mayor
                 of Vancouver, city councillors, school trustees, and park board commissioners.</p>
+            <p class="municipal-guide-link"><a href="municipal-2026.html">2026 Vancouver municipal results</a></p>
 
             <div class="constituency-grid">
                 <!-- Vancouver -->

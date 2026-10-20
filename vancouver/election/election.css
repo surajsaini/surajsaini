@@ -337,6 +337,121 @@ footer {
     }
 }
 
+/* Keep the election result summary readable in both themes. */
+#upcoming {
+    scroll-margin-top: 110px;
+}
+
+#upcoming p + p {
+    margin-top: 12px;
+}
+
+#upcoming a,
+#provincial .provincial-guide-link a,
+#provincial .constituency-current-link a,
+#municipal .municipal-guide-link a,
+#municipal .details-content a {
+    color: #1769a3;
+    text-underline-offset: 0.18em;
+}
+
+[data-theme="dark"] #upcoming a,
+[data-theme="dark"] #provincial .provincial-guide-link a,
+[data-theme="dark"] #provincial .constituency-current-link a,
+[data-theme="dark"] #municipal .municipal-guide-link a,
+[data-theme="dark"] #municipal .details-content a {
+    color: #85c7f2;
+}
+
+.election-home .hero {
+    padding: 40px 20px;
+}
+
+.election-home .election-page-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.election-home .constituency-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+}
+
+.election-home #provincial,
+.election-home #municipal {
+    scroll-margin-top: 110px;
+}
+
+.election-home .card-header {
+    gap: 12px;
+}
+
+.election-home .card-header h3 {
+    min-width: 0;
+    color: var(--text-dark);
+    overflow-wrap: anywhere;
+}
+
+.election-home .election-page-card {
+    display: block;
+    padding: 24px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--bg-alt);
+    text-decoration: none;
+    scroll-margin-top: 110px;
+}
+
+.election-home .election-page-card h3 {
+    color: var(--text-dark);
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.election-home .election-page-card p {
+    color: var(--text-light);
+    margin-bottom: 16px;
+}
+
+.election-home .election-page-card > span {
+    font-weight: 600;
+}
+
+.election-home .election-page-card:hover > span {
+    text-decoration: underline;
+}
+
+.election-home .election-page-card:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+    .election-home #provincial,
+    .election-home #municipal {
+        scroll-margin-top: 180px;
+    }
+
+    .election-home .result-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .election-home .result-stats {
+        text-align: left;
+    }
+
+    .election-home .election-page-links {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .election-home .election-page-card {
+        padding: 20px;
+        scroll-margin-top: 180px;
+    }
+}
+
 /* Vancouver 2026 guide; shared pages retain their existing styles. */
 .election-guide {
     --guide-link: #1769a3;
@@ -656,5 +771,176 @@ footer {
         display: block;
         font-weight: 600;
         color: var(--text-light);
+    }
+}
+
+/* Compact provincial and municipal guides share one layout and selector. */
+.compact-guide [hidden] {
+    display: none !important;
+}
+
+.compact-guide main .compact-hero {
+    padding: 28px 16px;
+}
+
+.compact-guide .compact-hero::after {
+    display: none;
+}
+
+.compact-guide .compact-hero h1 {
+    font-size: clamp(26px, 4vw, 36px);
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.compact-guide .compact-hero p {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.compact-guide .compact-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    align-items: start;
+    gap: 32px;
+    padding-block: 28px;
+}
+
+.compact-guide .compact-content > section {
+    padding: 0;
+    border: 0;
+}
+
+.compact-guide h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+}
+
+.compact-guide .voting-facts > div + div {
+    margin-top: 16px;
+}
+
+.compact-guide .voting-facts dt,
+.compact-guide [data-panel-picker] label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.compact-guide .voting-facts dd {
+    margin: 0;
+}
+
+.compact-guide .voting-facts small {
+    display: block;
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.compact-guide .eligibility {
+    margin-top: 18px;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.compact-guide [data-panel-select] {
+    width: 100%;
+    padding: 10px 12px;
+    min-height: 44px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    font: inherit;
+}
+
+.compact-guide [data-panel-select]:focus-visible {
+    outline: 3px solid var(--guide-link);
+    outline-offset: 3px;
+}
+
+.compact-guide .guide-panel {
+    padding: 18px;
+    margin-top: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-alt);
+    scroll-margin-top: 100px;
+}
+
+.compact-guide .compact-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 15px;
+}
+
+.compact-guide .compact-table caption {
+    text-align: left;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.compact-guide .compact-table th,
+.compact-guide .compact-table td {
+    padding: 9px 0;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border-color);
+    overflow-wrap: anywhere;
+}
+
+.compact-guide .compact-table th:first-child {
+    width: 52%;
+    padding-right: 14px;
+}
+
+.compact-guide .compact-table tbody tr:last-child > * {
+    border-bottom: 0;
+}
+
+.compact-guide .withdrawal-note {
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.compact-guide .compact-footer {
+    padding: 16px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .compact-guide .compact-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+        padding-block: 20px;
+    }
+
+    .compact-guide nav {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .compact-guide .guide-panel {
+        scroll-margin-top: 16px;
+        padding: 14px;
+    }
+}
+
+.compact-guide .candidate-party {
+    display: block;
+    color: var(--text-light);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.compact-guide .compact-table .number {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
 }
