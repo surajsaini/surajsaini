@@ -939,6 +939,26 @@ footer {
     font-variant-numeric: tabular-nums;
 }
 
+.compact-guide .result-table .number {
+    white-space: nowrap;
+}
+
+.compact-guide .result-share {
+    display: block;
+    color: var(--text-light);
+    font-size: 13px;
+}
+
+.compact-guide .result-table + .result-table {
+    margin-top: 20px;
+}
+
+.election-home .result-update-note {
+    margin-top: 12px;
+    color: var(--text-light);
+    font-size: 14px;
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
