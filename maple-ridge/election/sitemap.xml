@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://surajsaini.com/maple-ridge/election/general-local-elections.html</loc>
-        <lastmod>2026-10-12</lastmod>
-    </url>
+    <url><loc>https://surajsaini.com/maple-ridge/election/index.html</loc><lastmod>2026-11-17</lastmod></url>
+    <url><loc>https://surajsaini.com/maple-ridge/election/provincial-2026.html</loc><lastmod>2026-11-17</lastmod></url>
+    <url><loc>https://surajsaini.com/maple-ridge/election/provincial-2024.html</loc><lastmod>2026-11-17</lastmod></url>
+    <url><loc>https://surajsaini.com/maple-ridge/election/provincial-2020.html</loc><lastmod>2026-11-17</lastmod></url>
+    <url><loc>https://surajsaini.com/maple-ridge/election/municipal-2026.html</loc><lastmod>2026-11-17</lastmod></url>
+    <url><loc>https://surajsaini.com/maple-ridge/election/municipal-2022.html</loc><lastmod>2026-11-17</lastmod></url>
+    <url><loc>https://surajsaini.com/maple-ridge/election/municipal-2018.html</loc><lastmod>2026-11-17</lastmod></url>
 </urlset>

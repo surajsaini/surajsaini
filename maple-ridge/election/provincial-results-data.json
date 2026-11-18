@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-17",
+  "area": "Maple Ridge, British Columbia",
+  "type": "provincial",
+  "years": [
+    2026,
+    2024,
+    2020
+  ],
+  "boundaryNote": "The 2020 eastern-riding results are for Maple Ridge-Mission, the predecessor of Maple Ridge East. Boundaries changed before 2024; these are historical results, not estimates redistributed onto current boundaries.",
+  "displayRecommendation": "For consistent comparison across years, use validVotePercentage and label percentages as share of valid candidate votes. Alternatively use publishedPercentage with the year-specific denominator notes.",
+  "turnoutNote": "2026 district turnout is omitted because a final registered-voter denominator was not provided in the official final-count source reviewed. Historical turnout includes rejected ballots and uses registered voters.",
+  "sources": [
+    {
+      "id": "results-2026",
+      "title": "Elections BC: 2026 Provincial General Election final count candidate results",
+      "url": "https://results.elections.bc.ca/Results_11684_GE-2026-10-24_Candidate.html",
+      "status": "Final count complete",
+      "asOf": "2026-11-09 14:37 Pacific"
+    },
+    {
+      "id": "declaration-2026",
+      "title": "Elections BC: Final Results for the 2026 Provincial General Election Now Available",
+      "url": "https://elections.bc.ca/news/final-results-for-the-2026-provincial-general-election-now-available/",
+      "status": "Lawrence Mok and Doug Morneau declared elected"
+    },
+    {
+      "id": "official-bulletin-2026",
+      "title": "Elections BC: Political Party Bulletin, November 13, 2026",
+      "url": "https://elections.bc.ca/docs/Political-Party-Bulletin-November-13-2026.pdf",
+      "notes": "Confirms official results declared November 10. Automatic judicial recounts concern Kelowna Centre and Ladysmith-Oceanside."
+    },
+    {
+      "id": "statement-2024",
+      "title": "Elections BC: Statement of Votes, 43rd Provincial General Election, October 19, 2024",
+      "url": "https://elections.bc.ca/docs/rpt/statement-of-votes-2024-provincial-election.pdf",
+      "publishedDate": "2025-04-17",
+      "printedPages": [
+        88,
+        89,
+        90,
+        91
+      ],
+      "pdfPageNumbers": [
+        93,
+        94,
+        95,
+        96
+      ]
+    },
+    {
+      "id": "statement-2020",
+      "title": "Elections BC: Statement of Votes, 2020 Provincial General Election",
+      "url": "https://www3.elections.bc.ca/docs/rpt/statement-of-votes-2020-provincial-general-election.pdf",
+      "printedPages": [
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205
+      ],
+      "pdfPageNumbers": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116
+      ]
+    },
+    {
+      "id": "boundaries-2023",
+      "title": "BC Electoral Boundaries Commission Final Report, April 3, 2023",
+      "url": "https://elections.bc.ca/docs/rpt/BCEBC-Final-Report-April-3-2023.pdf",
+      "printedPages": [
+        121
+      ],
+      "notes": "Describes adding Yennadon and renaming Maple Ridge-Mission as Maple Ridge East; retrieved indexed excerpt."
+    },
+    {
+      "id": "maps-2024-2026",
+      "title": "Elections BC: 2024 and 2026 Provincial Election Maps",
+      "url": "https://elections.bc.ca/resources/maps/2024-provincial-election-maps/"
+    },
+    {
+      "id": "maps-2017-2020",
+      "title": "Elections BC: 2017 and 2020 Provincial Election Maps",
+      "url": "https://elections.bc.ca/resources/maps/2017-and-2020-provincial-election-maps/"
+    }
+  ],
+  "elections": [
+    {
+      "year": 2026,
+      "date": "2026-10-24",
+      "status": "Official results declared",
+      "declaredDate": "2026-11-10",
+      "resultsAsOf": "2026-11-09T14:37:00-08:00",
+      "sourceIds": [
+        "results-2026",
+        "declaration-2026",
+        "official-bulletin-2026"
+      ],
+      "publishedPercentageBasis": "total_considered_votes",
+      "percentageNote": "Elections BC's 2026 results percentages use total considered ballots, including rejected ballots.",
+      "districts": [
+        {
+          "key": "maple-ridge-east",
+          "name": "Maple Ridge East",
+          "totalValidVotes": 24187,
+          "rejectedBallots": 51,
+          "totalConsideredVotes": 24238,
+          "registeredVoters": null,
+          "turnoutPercent": null,
+          "winner": "Lawrence Mok",
+          "marginVotes": 3844,
+          "candidates": [
+            {
+              "name": "Lawrence Mok",
+              "party": "Conservative Party",
+              "votes": 12926,
+              "publishedPercentage": 53.33,
+              "elected": true,
+              "rank": 1,
+              "validVotePercentage": 53.44
+            },
+            {
+              "name": "Hudson Campbell",
+              "party": "BC NDP",
+              "votes": 9082,
+              "publishedPercentage": 37.47,
+              "elected": false,
+              "rank": 2,
+              "validVotePercentage": 37.55
+            },
+            {
+              "name": "Daniel Kite",
+              "party": "BC Green Party",
+              "votes": 1832,
+              "publishedPercentage": 7.56,
+              "elected": false,
+              "rank": 3,
+              "validVotePercentage": 7.57
+            },
+            {
+              "name": "Chris Hatchwell",
+              "party": "Independent",
+              "votes": 347,
+              "publishedPercentage": 1.43,
+              "elected": false,
+              "rank": 4,
+              "validVotePercentage": 1.43
+            }
+          ]
+        },
+        {
+          "key": "maple-ridge-pitt-meadows",
+          "name": "Maple Ridge-Pitt Meadows",
+          "totalValidVotes": 24374,
+          "rejectedBallots": 65,
+          "totalConsideredVotes": 24439,
+          "registeredVoters": null,
+          "turnoutPercent": null,
+          "winner": "Doug Morneau",
+          "marginVotes": 907,
+          "candidates": [
+            {
+              "name": "Doug Morneau",
+              "party": "Conservative Party",
+              "votes": 11780,
+              "publishedPercentage": 48.2,
+              "elected": true,
+              "rank": 1,
+              "validVotePercentage": 48.33
+            },
+            {
+              "name": "Lisa Beare",
+              "party": "BC NDP",
+              "votes": 10873,
+              "publishedPercentage": 44.49,
+              "elected": false,
+              "rank": 2,
+              "validVotePercentage": 44.61
+            },
+            {
+              "name": "Jordan Simmons",
+              "party": "CentreBC",
+              "votes": 892,
+              "publishedPercentage": 3.65,
+              "elected": false,
+              "rank": 3,
+              "validVotePercentage": 3.66
+            },
+            {
+              "name": "Susan Einarsson",
+              "party": "OneBC",
+              "votes": 829,
+              "publishedPercentage": 3.39,
+              "elected": false,
+              "rank": 4,
+              "validVotePercentage": 3.4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "date": "2024-10-19",
+      "status": "Official Statement of Votes",
+      "sourceIds": [
+        "statement-2024"
+      ],
+      "publishedPercentageBasis": "valid_votes",
+      "percentageNote": "Official 2024 Statement of Votes percentages use valid candidate votes, excluding rejected ballots.",
+      "districts": [
+        {
+          "key": "maple-ridge-east",
+          "name": "Maple Ridge East",
+          "sourcePages": [
+            88,
+            89
+          ],
+          "totalValidVotes": 25645,
+          "rejectedBallots": 49,
+          "totalConsideredVotes": 25694,
+          "registeredVoters": 44335,
+          "turnoutPercent": 57.95,
+          "winner": "Lawrence Mok",
+          "marginVotes": 97,
+          "candidates": [
+            {
+              "name": "Lawrence Mok",
+              "party": "Conservative Party",
+              "votes": 12058,
+              "publishedPercentage": 47.02,
+              "elected": true,
+              "rank": 1,
+              "validVotePercentage": 47.02
+            },
+            {
+              "name": "Bob D’Eith",
+              "party": "BC NDP",
+              "votes": 11961,
+              "publishedPercentage": 46.64,
+              "elected": false,
+              "rank": 2,
+              "validVotePercentage": 46.64
+            },
+            {
+              "name": "Kylee Williams",
+              "party": "BC Green Party",
+              "votes": 1626,
+              "publishedPercentage": 6.34,
+              "elected": false,
+              "rank": 3,
+              "validVotePercentage": 6.34
+            }
+          ]
+        },
+        {
+          "key": "maple-ridge-pitt-meadows",
+          "name": "Maple Ridge-Pitt Meadows",
+          "sourcePages": [
+            90,
+            91
+          ],
+          "totalValidVotes": 26381,
+          "rejectedBallots": 94,
+          "totalConsideredVotes": 26475,
+          "registeredVoters": 44850,
+          "turnoutPercent": 59.03,
+          "winner": "Lisa Beare",
+          "marginVotes": 2579,
+          "candidates": [
+            {
+              "name": "Lisa Beare",
+              "party": "BC NDP",
+              "votes": 14480,
+              "publishedPercentage": 54.89,
+              "elected": true,
+              "rank": 1,
+              "validVotePercentage": 54.89
+            },
+            {
+              "name": "Mike Morden",
+              "party": "Conservative Party",
+              "votes": 11901,
+              "publishedPercentage": 45.11,
+              "elected": false,
+              "rank": 2,
+              "validVotePercentage": 45.11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "date": "2020-10-24",
+      "status": "Official Statement of Votes",
+      "sourceIds": [
+        "statement-2020",
+        "boundaries-2023",
+        "maps-2024-2026",
+        "maps-2017-2020"
+      ],
+      "publishedPercentageBasis": "valid_votes",
+      "percentageNote": "Official 2020 Statement of Votes percentages use valid candidate votes, excluding rejected ballots.",
+      "districts": [
+        {
+          "key": "maple-ridge-east",
+          "name": "Maple Ridge-Mission",
+          "historicalName": true,
+          "boundaryNote": "Maple Ridge-Mission was renamed Maple Ridge East with changed boundaries before the 2024 election. These are actual 2020 results on the former boundaries, not redistributed estimates.",
+          "sourcePages": [
+            199,
+            200,
+            201,
+            202
+          ],
+          "totalValidVotes": 25176,
+          "rejectedBallots": 326,
+          "totalConsideredVotes": 25502,
+          "registeredVoters": 47901,
+          "turnoutPercent": 53.24,
+          "winner": "Bob D’Eith",
+          "marginVotes": 5503,
+          "candidates": [
+            {
+              "name": "Bob D’Eith",
+              "party": "BC NDP",
+              "votes": 13915,
+              "publishedPercentage": 55.27,
+              "elected": true,
+              "rank": 1,
+              "validVotePercentage": 55.27
+            },
+            {
+              "name": "Chelsa Meadus",
+              "party": "BC Liberal Party",
+              "votes": 8412,
+              "publishedPercentage": 33.41,
+              "elected": false,
+              "rank": 2,
+              "validVotePercentage": 33.41
+            },
+            {
+              "name": "Matt Trenholm",
+              "party": "BC Green Party",
+              "votes": 2849,
+              "publishedPercentage": 11.32,
+              "elected": false,
+              "rank": 3,
+              "validVotePercentage": 11.32
+            }
+          ]
+        },
+        {
+          "key": "maple-ridge-pitt-meadows",
+          "name": "Maple Ridge-Pitt Meadows",
+          "boundaryNote": "Actual 2020 results under the boundaries used in that election. Provincial boundaries changed before 2024, so the electorate is not identical across all three elections.",
+          "sourcePages": [
+            203,
+            204,
+            205
+          ],
+          "totalValidVotes": 25040,
+          "rejectedBallots": 458,
+          "totalConsideredVotes": 25498,
+          "registeredVoters": 45442,
+          "turnoutPercent": 56.11,
+          "winner": "Lisa Beare",
+          "marginVotes": 6714,
+          "candidates": [
+            {
+              "name": "Lisa Beare",
+              "party": "BC NDP",
+              "votes": 15877,
+              "publishedPercentage": 63.41,
+              "elected": true,
+              "rank": 1,
+              "validVotePercentage": 63.41
+            },
+            {
+              "name": "Cheryl Ashlie",
+              "party": "BC Liberal Party",
+              "votes": 9163,
+              "publishedPercentage": 36.59,
+              "elected": false,
+              "rank": 2,
+              "validVotePercentage": 36.59
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,904 @@
+{
+  "jurisdiction": "City of Maple Ridge, British Columbia",
+  "reviewedDate": "2026-11-17",
+  "methodology": {
+    "scope": "Last three general local elections: 2026, 2022 and 2018. Each elects one mayor, six councillors and five School District 42 trustees for Maple Ridge.",
+    "ordering": "Candidates are ordered by vote count, highest first. Elected flags reflect the highest one, six and five totals respectively, verified against official elected lists where available.",
+    "mayorPercentages": "Calculated as candidate votes divided by the sum of all valid candidate votes in that mayoral race, rounded to two decimal places. Excludes blank/rejected ballots.",
+    "multiSeatPercentages": "Stored percentages, if used, are each candidate's share of all candidate selections in that contest, not a share of voters. Prefer votes and elected labels for council/trustee displays.",
+    "assentPercentages": "Yes and No percentages are each count divided by total valid Yes+No votes for that question, rounded to two decimal places."
+  },
+  "elections": [
+    {
+      "year": 2026,
+      "electionDate": "2026-10-17",
+      "status": "Official results",
+      "declaredDate": "2026-10-21",
+      "ballotsCast": 21612,
+      "turnoutPercent": 30.18,
+      "turnoutApproximate": true,
+      "notes": [
+        "The City election-results webpage and October 22 official-results news release report 21,612 ballots and approximately 30.18% turnout. The official at-a-glance PDF's ballot row instead totals 21,618, six more. This dataset uses the explicit City-reported turnout figure; candidate and assent vote totals agree across the result sources.",
+        "One heading on the City webpage still says preliminary assent results. The October 21 signed determinations and October 22 official-results news release confirm the same final assent counts."
+      ],
+      "sources": [
+        {
+          "title": "City of Maple Ridge Official Local Election 2026 Results",
+          "url": "https://www.mapleridge.ca/news/city-maple-ridge-official-local-election-2026-results",
+          "usage": "Official declaration date, elected candidates, 21,612 ballots and 30.18% turnout, final assent outcomes; published October 22 and updated October 27, 2026."
+        },
+        {
+          "title": "Election Results 2026",
+          "url": "https://www.mapleridge.ca/your-government/municipal-elections/election-results-2026",
+          "usage": "All mayor, councillor and Maple Ridge school trustee candidate totals and stated percentages."
+        },
+        {
+          "title": "2026 Local General Election Official Results at a Glance",
+          "url": "https://www.mapleridge.ca/media/file/webcopy-fullelectionsresultsataglance-v5-comms-261022",
+          "usage": "Complete all-candidate totals, candidate-vote denominators, assent totals, polling-station detail; ballot-row discrepancy recorded in notes."
+        },
+        {
+          "title": "2026 elected officials and assent vote declarations and determinations",
+          "url": "https://www.mapleridge.ca/media/file/webcopy-cityofmapleridgeelectedofficialsandassentvote2026-declarationsanddeterminations",
+          "usage": "Signed official declarations and determinations dated October 21, 2026."
+        }
+      ],
+      "races": [
+        {
+          "id": "mayor",
+          "label": "Mayor",
+          "seats": 1,
+          "candidateVotesTotal": 21279,
+          "percentageBasis": "Valid candidate votes in the mayoral race",
+          "candidates": [
+            {
+              "name": "Jerry Kok",
+              "votes": 12347,
+              "elected": true,
+              "percent": 58.02
+            },
+            {
+              "name": "Dan Ruimy",
+              "votes": 8932,
+              "elected": false,
+              "percent": 41.98
+            }
+          ]
+        },
+        {
+          "id": "council",
+          "label": "City Council",
+          "seats": 6,
+          "candidateVotesTotal": 104664,
+          "percentageBasis": "All candidate selections in this multi-seat contest, not voters",
+          "candidates": [
+            {
+              "name": "Judy Dueck",
+              "votes": 9418,
+              "elected": true,
+              "percent": 9
+            },
+            {
+              "name": "Chelsa Meadus",
+              "votes": 9403,
+              "elected": true,
+              "percent": 8.98
+            },
+            {
+              "name": "Bob D’Eith",
+              "votes": 8763,
+              "elected": true,
+              "percent": 8.37
+            },
+            {
+              "name": "Mike Morden",
+              "votes": 8323,
+              "elected": true,
+              "percent": 7.95
+            },
+            {
+              "name": "Korleen Carreras",
+              "votes": 7387,
+              "elected": true,
+              "percent": 7.06
+            },
+            {
+              "name": "Andrew Laity",
+              "votes": 7371,
+              "elected": true,
+              "percent": 7.04
+            },
+            {
+              "name": "Leanne Koehn",
+              "votes": 7116,
+              "elected": false,
+              "percent": 6.8
+            },
+            {
+              "name": "Inya Mitrovic",
+              "votes": 6894,
+              "elected": false,
+              "percent": 6.59
+            },
+            {
+              "name": "Ryan Svendsen",
+              "votes": 6877,
+              "elected": false,
+              "percent": 6.57
+            },
+            {
+              "name": "Kristina Brown",
+              "votes": 6077,
+              "elected": false,
+              "percent": 5.81
+            },
+            {
+              "name": "Bhupinder Johar",
+              "votes": 6075,
+              "elected": false,
+              "percent": 5.8
+            },
+            {
+              "name": "Cindy-Lea Stephenson",
+              "votes": 5111,
+              "elected": false,
+              "percent": 4.88
+            },
+            {
+              "name": "Ken Holland",
+              "votes": 4519,
+              "elected": false,
+              "percent": 4.32
+            },
+            {
+              "name": "Lou Jose",
+              "votes": 4441,
+              "elected": false,
+              "percent": 4.24
+            },
+            {
+              "name": "Steven Muise",
+              "votes": 4080,
+              "elected": false,
+              "percent": 3.9
+            },
+            {
+              "name": "Leah Campbell",
+              "votes": 2809,
+              "elected": false,
+              "percent": 2.68
+            }
+          ]
+        },
+        {
+          "id": "trustees",
+          "label": "School District 42 — Maple Ridge trustees",
+          "seats": 5,
+          "candidateVotesTotal": 72855,
+          "percentageBasis": "All candidate selections in this multi-seat contest, not voters",
+          "candidates": [
+            {
+              "name": "Elaine Yamamoto",
+              "votes": 8722,
+              "elected": true,
+              "percent": 11.97
+            },
+            {
+              "name": "Mike Murray",
+              "votes": 7284,
+              "elected": true,
+              "percent": 10
+            },
+            {
+              "name": "Mark Bailey",
+              "votes": 6203,
+              "elected": true,
+              "percent": 8.51
+            },
+            {
+              "name": "Pascale Shaw",
+              "votes": 4985,
+              "elected": true,
+              "percent": 6.84
+            },
+            {
+              "name": "Jacquie Montgomery",
+              "votes": 4958,
+              "elected": true,
+              "percent": 6.81
+            },
+            {
+              "name": "Paul Davidson",
+              "votes": 4866,
+              "elected": false,
+              "percent": 6.68
+            },
+            {
+              "name": "Brad Tones",
+              "votes": 4523,
+              "elected": false,
+              "percent": 6.21
+            },
+            {
+              "name": "Nicole Trudeau",
+              "votes": 4462,
+              "elected": false,
+              "percent": 6.12
+            },
+            {
+              "name": "Crystal Warner",
+              "votes": 4367,
+              "elected": false,
+              "percent": 5.99
+            },
+            {
+              "name": "Emily Haugen",
+              "votes": 4221,
+              "elected": false,
+              "percent": 5.79
+            },
+            {
+              "name": "Jeff Stromgren",
+              "votes": 3732,
+              "elected": false,
+              "percent": 5.12
+            },
+            {
+              "name": "Karen Redkwich",
+              "votes": 3203,
+              "elected": false,
+              "percent": 4.4
+            },
+            {
+              "name": "Chris Sandve",
+              "votes": 3062,
+              "elected": false,
+              "percent": 4.2
+            },
+            {
+              "name": "Deepa Bissessur",
+              "votes": 3001,
+              "elected": false,
+              "percent": 4.12
+            },
+            {
+              "name": "Kourosh Ahmadian",
+              "votes": 2799,
+              "elected": false,
+              "percent": 3.84
+            },
+            {
+              "name": "Aidan Allenbuckle",
+              "votes": 2467,
+              "elected": false,
+              "percent": 3.39
+            }
+          ]
+        }
+      ],
+      "assent": [
+        {
+          "project": "Hammond Aquatics and Recreation Centre",
+          "bylaw": "8123-2026",
+          "borrowingLimit": 227000000,
+          "yesVotes": 6841,
+          "noVotes": 14218,
+          "validVotes": 21059,
+          "yesPercent": 32.48,
+          "noPercent": 67.52,
+          "passed": false,
+          "status": "Official result",
+          "determinedDate": "2026-10-21"
+        },
+        {
+          "project": "Hammond Multi-Use Community Park",
+          "bylaw": "8124-2026",
+          "borrowingLimit": 23000000,
+          "yesVotes": 6209,
+          "noVotes": 14797,
+          "validVotes": 21006,
+          "yesPercent": 29.56,
+          "noPercent": 70.44,
+          "passed": false,
+          "status": "Official result",
+          "determinedDate": "2026-10-21"
+        },
+        {
+          "project": "Albion Twin-Rink Arena Expansion",
+          "bylaw": "8122-2026",
+          "borrowingLimit": 143000000,
+          "yesVotes": 9501,
+          "noVotes": 11553,
+          "validVotes": 21054,
+          "yesPercent": 45.13,
+          "noPercent": 54.87,
+          "passed": false,
+          "status": "Official result",
+          "determinedDate": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "electionDate": "2022-10-15",
+      "status": "Official results",
+      "declaredDate": "2022-10-19",
+      "ballotsCast": 14491,
+      "turnoutPercent": 21.87,
+      "turnoutApproximate": true,
+      "notes": [
+        "All candidate vote totals are crosschecked against CivicInfo BC's 2022 final candidate-results report, updated March 1, 2023. The City's detailed precinct PDF has the same totals but retains its election-night 'Unofficial' label. Elected names are independently confirmed by the City declaration/news release and the British Columbia Gazette.",
+        "CivicInfo's archived municipal page reports candidate percentages of total ballots cast. This dataset instead calculates mayoral percentages from valid candidate votes (14,372), consistently with the other years."
+      ],
+      "sources": [
+        {
+          "title": "Official Results of the 2022 General Local Election",
+          "url": "https://www.mapleridge.ca/media/file/2022-10-19-official-election-results-2022-general-local",
+          "usage": "Official mayor and council winners/votes, October 19 declaration publication, 14,491 ballots and 21.87% turnout."
+        },
+        {
+          "title": "Declaration of Official Election Results 2022",
+          "url": "https://www.mapleridge.ca/media/file/declaration-official-results-2022",
+          "usage": "Signed declarations of elected officials; image PDF, corroborated by Gazette."
+        },
+        {
+          "title": "Maple Ridge 2022 Results per Precinct",
+          "url": "https://www.mapleridge.ca/media/file/results-precinct",
+          "usage": "All candidate totals and polling-station detail; labeled unofficial and crosschecked with final CivicInfo report."
+        },
+        {
+          "title": "CivicInfo BC 2022 Candidates and Results",
+          "url": "https://www.civicinfo.bc.ca/electionreports/candidates-and-results.php?year=2022",
+          "usage": "All mayor/council and Maple Ridge trustee totals and elected flags; report rows updated March 1, 2023. Pitt Meadows trustee area excluded."
+        },
+        {
+          "title": "CivicInfo BC Maple Ridge 2022 archived results",
+          "url": "https://2022.localelections.ca/election_results/69_2022_results.html",
+          "usage": "Additional crosscheck of all mayor and council totals; percentages use ballots cast, not the denominator used here."
+        },
+        {
+          "title": "British Columbia Gazette, November 10, 2022",
+          "url": "https://www.bclaws.gov.bc.ca/civix/document/id/bcgaz1/bcgaz1/447060167",
+          "usage": "Chief Election Officer notice dated November 2 confirms the elected mayor, six councillors and five Maple Ridge school trustees."
+        }
+      ],
+      "races": [
+        {
+          "id": "mayor",
+          "label": "Mayor",
+          "seats": 1,
+          "candidateVotesTotal": 14372,
+          "percentageBasis": "Valid candidate votes in the mayoral race",
+          "candidates": [
+            {
+              "name": "Dan Ruimy",
+              "votes": 6306,
+              "elected": true,
+              "percent": 43.88
+            },
+            {
+              "name": "Mike Morden",
+              "votes": 4321,
+              "elected": false,
+              "percent": 30.07
+            },
+            {
+              "name": "Corisa Bell",
+              "votes": 2799,
+              "elected": false,
+              "percent": 19.48
+            },
+            {
+              "name": "Darleen Bernard",
+              "votes": 600,
+              "elected": false,
+              "percent": 4.17
+            },
+            {
+              "name": "Jacques Blackstone",
+              "votes": 346,
+              "elected": false,
+              "percent": 2.41
+            }
+          ]
+        },
+        {
+          "id": "council",
+          "label": "City Council",
+          "seats": 6,
+          "candidateVotesTotal": 70881,
+          "percentageBasis": "All candidate selections in this multi-seat contest, not voters",
+          "candidates": [
+            {
+              "name": "Ahmed Yousef",
+              "votes": 6028,
+              "elected": true,
+              "percent": 8.5
+            },
+            {
+              "name": "Jenny Tan",
+              "votes": 5636,
+              "elected": true,
+              "percent": 7.95
+            },
+            {
+              "name": "Korleen Carreras",
+              "votes": 5438,
+              "elected": true,
+              "percent": 7.67
+            },
+            {
+              "name": "Sunny Schiller",
+              "votes": 5155,
+              "elected": true,
+              "percent": 7.27
+            },
+            {
+              "name": "Judy Dueck",
+              "votes": 5018,
+              "elected": true,
+              "percent": 7.08
+            },
+            {
+              "name": "Onyeka Dozie",
+              "votes": 4881,
+              "elected": true,
+              "percent": 6.89
+            },
+            {
+              "name": "Chelsa Meadus",
+              "votes": 4575,
+              "elected": false,
+              "percent": 6.45
+            },
+            {
+              "name": "Ryan Svendsen",
+              "votes": 4275,
+              "elected": false,
+              "percent": 6.03
+            },
+            {
+              "name": "Robert Masse",
+              "votes": 3936,
+              "elected": false,
+              "percent": 5.55
+            },
+            {
+              "name": "Craig Speirs",
+              "votes": 3524,
+              "elected": false,
+              "percent": 4.97
+            },
+            {
+              "name": "Bhupinder Johar",
+              "votes": 3175,
+              "elected": false,
+              "percent": 4.48
+            },
+            {
+              "name": "Leah Pillet",
+              "votes": 2627,
+              "elected": false,
+              "percent": 3.71
+            },
+            {
+              "name": "Sarah Little",
+              "votes": 2546,
+              "elected": false,
+              "percent": 3.59
+            },
+            {
+              "name": "Rebecca Stiles",
+              "votes": 2458,
+              "elected": false,
+              "percent": 3.47
+            },
+            {
+              "name": "Rajinder Chhina",
+              "votes": 2312,
+              "elected": false,
+              "percent": 3.26
+            },
+            {
+              "name": "Chris O'Brian",
+              "votes": 2225,
+              "elected": false,
+              "percent": 3.14
+            },
+            {
+              "name": "Andre Roberge",
+              "votes": 2040,
+              "elected": false,
+              "percent": 2.88
+            },
+            {
+              "name": "Lou Jose",
+              "votes": 1591,
+              "elected": false,
+              "percent": 2.24
+            },
+            {
+              "name": "Grover Telford",
+              "votes": 1299,
+              "elected": false,
+              "percent": 1.83
+            },
+            {
+              "name": "Jeffrey Martin",
+              "votes": 1297,
+              "elected": false,
+              "percent": 1.83
+            },
+            {
+              "name": "Jeff Roberts",
+              "votes": 845,
+              "elected": false,
+              "percent": 1.19
+            }
+          ]
+        },
+        {
+          "id": "trustees",
+          "label": "School District 42 — Maple Ridge trustees",
+          "seats": 5,
+          "candidateVotesTotal": 45601,
+          "percentageBasis": "All candidate selections in this multi-seat contest, not voters",
+          "candidates": [
+            {
+              "name": "Elaine Yamamoto",
+              "votes": 7680,
+              "elected": true,
+              "percent": 16.84
+            },
+            {
+              "name": "Mike Murray",
+              "votes": 6641,
+              "elected": true,
+              "percent": 14.56
+            },
+            {
+              "name": "Kim Dumore",
+              "votes": 5395,
+              "elected": true,
+              "percent": 11.83
+            },
+            {
+              "name": "Pascale Shaw",
+              "votes": 4939,
+              "elected": true,
+              "percent": 10.83
+            },
+            {
+              "name": "Gabe Liosis",
+              "votes": 4066,
+              "elected": true,
+              "percent": 8.92
+            },
+            {
+              "name": "Brian Dominick",
+              "votes": 4015,
+              "elected": false,
+              "percent": 8.8
+            },
+            {
+              "name": "Johnnie Day",
+              "votes": 3689,
+              "elected": false,
+              "percent": 8.09
+            },
+            {
+              "name": "Gladys Hewson",
+              "votes": 3522,
+              "elected": false,
+              "percent": 7.72
+            },
+            {
+              "name": "Yvonne Desabrais",
+              "votes": 3224,
+              "elected": false,
+              "percent": 7.07
+            },
+            {
+              "name": "Karen Redkwich",
+              "votes": 2430,
+              "elected": false,
+              "percent": 5.33
+            }
+          ]
+        }
+      ],
+      "assent": []
+    },
+    {
+      "year": 2018,
+      "electionDate": "2018-10-20",
+      "status": "Official results",
+      "declaredDate": null,
+      "sourceUpdatedDate": "2018-10-24",
+      "registeredVoters": 59730,
+      "ballotsCast": 20123,
+      "turnoutPercent": 33.69,
+      "turnoutApproximate": false,
+      "notes": [
+        "The detailed official 2018 results PDF, updated October 24, reports 20,123 ballots, a voters list of 59,730, and 33.69% turnout. Later City summaries describe 2018 turnout as approximately 33.5%; this dataset retains the detailed official return's 33.69%.",
+        "Five Maple Ridge school trustee seats are shown; the separate Pitt Meadows contest is excluded."
+      ],
+      "sources": [
+        {
+          "title": "City of Maple Ridge 2018 Election Results (OFFICIAL)",
+          "url": "https://www.mapleridge.ca/sites/default/files/2023-12/Election-Results-2018.pdf",
+          "usage": "All mayor/council/Maple Ridge school trustee vote totals, ballots cast and turnout; updated October 24, 2018 at 12:16:48 PM."
+        },
+        {
+          "title": "City of Maple Ridge Prior Election Results",
+          "url": "https://www.mapleridge.ca/your-government/municipal-elections/prior-election-results",
+          "usage": "Official archive linking to the 2018 official detailed return."
+        }
+      ],
+      "races": [
+        {
+          "id": "mayor",
+          "label": "Mayor",
+          "seats": 1,
+          "candidateVotesTotal": 19936,
+          "percentageBasis": "Valid candidate votes in the mayoral race",
+          "candidates": [
+            {
+              "name": "Mike Morden",
+              "votes": 11287,
+              "elected": true,
+              "percent": 56.62
+            },
+            {
+              "name": "Ernie Daykin",
+              "votes": 4481,
+              "elected": false,
+              "percent": 22.48
+            },
+            {
+              "name": "Craig Speirs",
+              "votes": 3258,
+              "elected": false,
+              "percent": 16.34
+            },
+            {
+              "name": "Douglas Blamey",
+              "votes": 574,
+              "elected": false,
+              "percent": 2.88
+            },
+            {
+              "name": "Mike Shields",
+              "votes": 336,
+              "elected": false,
+              "percent": 1.69
+            }
+          ]
+        },
+        {
+          "id": "council",
+          "label": "City Council",
+          "seats": 6,
+          "candidateVotesTotal": 98133,
+          "percentageBasis": "All candidate selections in this multi-seat contest, not voters",
+          "candidates": [
+            {
+              "name": "Judy Dueck",
+              "votes": 8597,
+              "elected": true,
+              "percent": 8.76
+            },
+            {
+              "name": "Gordy Robson",
+              "votes": 7738,
+              "elected": true,
+              "percent": 7.89
+            },
+            {
+              "name": "Chelsa Meadus",
+              "votes": 7441,
+              "elected": true,
+              "percent": 7.58
+            },
+            {
+              "name": "Ahmed Yousef",
+              "votes": 6871,
+              "elected": true,
+              "percent": 7
+            },
+            {
+              "name": "Ryan Svendsen",
+              "votes": 6415,
+              "elected": true,
+              "percent": 6.54
+            },
+            {
+              "name": "Kiersten Duncan",
+              "votes": 5979,
+              "elected": true,
+              "percent": 6.09
+            },
+            {
+              "name": "Susan Carr",
+              "votes": 5887,
+              "elected": false,
+              "percent": 6
+            },
+            {
+              "name": "Peter Tam",
+              "votes": 5732,
+              "elected": false,
+              "percent": 5.84
+            },
+            {
+              "name": "Don Mitchell",
+              "votes": 4995,
+              "elected": false,
+              "percent": 5.09
+            },
+            {
+              "name": "Al Robbie",
+              "votes": 4304,
+              "elected": false,
+              "percent": 4.39
+            },
+            {
+              "name": "Mike Hayner",
+              "votes": 3705,
+              "elected": false,
+              "percent": 3.78
+            },
+            {
+              "name": "Bhupinder Johar",
+              "votes": 3702,
+              "elected": false,
+              "percent": 3.77
+            },
+            {
+              "name": "Terry Kennedy",
+              "votes": 3247,
+              "elected": false,
+              "percent": 3.31
+            },
+            {
+              "name": "Lou Jose",
+              "votes": 3067,
+              "elected": false,
+              "percent": 3.13
+            },
+            {
+              "name": "Chris Bossley",
+              "votes": 2957,
+              "elected": false,
+              "percent": 3.01
+            },
+            {
+              "name": "Chris O'Brian",
+              "votes": 2758,
+              "elected": false,
+              "percent": 2.81
+            },
+            {
+              "name": "Elizabeth Taylor",
+              "votes": 2749,
+              "elected": false,
+              "percent": 2.8
+            },
+            {
+              "name": "Onyeka Dozie",
+              "votes": 2738,
+              "elected": false,
+              "percent": 2.79
+            },
+            {
+              "name": "Rysa Kronebusch",
+              "votes": 2421,
+              "elected": false,
+              "percent": 2.47
+            },
+            {
+              "name": "Andrew Pozsar",
+              "votes": 2313,
+              "elected": false,
+              "percent": 2.36
+            },
+            {
+              "name": "Rick Pennykid",
+              "votes": 1515,
+              "elected": false,
+              "percent": 1.54
+            },
+            {
+              "name": "Glenn Schaffrick",
+              "votes": 859,
+              "elected": false,
+              "percent": 0.88
+            },
+            {
+              "name": "Michael Tuzzi",
+              "votes": 824,
+              "elected": false,
+              "percent": 0.84
+            },
+            {
+              "name": "Kevin Priebe",
+              "votes": 686,
+              "elected": false,
+              "percent": 0.7
+            },
+            {
+              "name": "Andrew Hegedus",
+              "votes": 633,
+              "elected": false,
+              "percent": 0.65
+            }
+          ]
+        },
+        {
+          "id": "trustees",
+          "label": "School District 42 — Maple Ridge trustees",
+          "seats": 5,
+          "candidateVotesTotal": 61460,
+          "percentageBasis": "All candidate selections in this multi-seat contest, not voters",
+          "candidates": [
+            {
+              "name": "Mike Murray",
+              "votes": 10510,
+              "elected": true,
+              "percent": 17.1
+            },
+            {
+              "name": "Elaine Yamamoto",
+              "votes": 9832,
+              "elected": true,
+              "percent": 16
+            },
+            {
+              "name": "Kim Dumore",
+              "votes": 7464,
+              "elected": true,
+              "percent": 12.14
+            },
+            {
+              "name": "Colette Trudeau",
+              "votes": 7160,
+              "elected": true,
+              "percent": 11.65
+            },
+            {
+              "name": "Pascale Shaw",
+              "votes": 6960,
+              "elected": true,
+              "percent": 11.32
+            },
+            {
+              "name": "Gord McCallum",
+              "votes": 6249,
+              "elected": false,
+              "percent": 10.17
+            },
+            {
+              "name": "Mark Bailey",
+              "votes": 5563,
+              "elected": false,
+              "percent": 9.05
+            },
+            {
+              "name": "Brenda Rubenuik",
+              "votes": 4397,
+              "elected": false,
+              "percent": 7.15
+            },
+            {
+              "name": "Robert Hornsey",
+              "votes": 3325,
+              "elected": false,
+              "percent": 5.41
+            }
+          ]
+        }
+      ],
+      "assent": []
+    }
+  ]
+}

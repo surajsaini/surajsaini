@@ -59,4 +59,51 @@
             });
         });
     }
+
+    // All panels remain readable in the HTML when JavaScript is unavailable.
+    document.querySelectorAll('[data-panel-picker]').forEach(picker => {
+        const select = picker.querySelector('[data-panel-select]');
+        const results = select && document.getElementById(select.getAttribute('aria-controls'));
+        if (!select || !results?.hasAttribute('data-panel-results')) return;
+        const panels = Array.from(results.querySelectorAll('[data-panel]'));
+        if (!panels.length) return;
+
+        function hashId() {
+            try {
+                return decodeURIComponent(window.location.hash.slice(1));
+            } catch {
+                return '';
+            }
+        }
+
+        function showPanel(id) {
+            const selected = panels.find(panel => panel.id === id);
+            if (!selected) return;
+            select.value = selected.id;
+            panels.forEach(panel => { panel.hidden = panel !== selected; });
+        }
+
+        const initial = panels.find(panel => panel.id === hashId())
+            || panels.find(panel => panel.id === select.value)
+            || panels[0];
+        showPanel(initial.id);
+        picker.hidden = false;
+
+        select.addEventListener('change', () => {
+            if (!panels.some(panel => panel.id === select.value)) return;
+            showPanel(select.value);
+            const hash = '#' + encodeURIComponent(select.value);
+            try {
+                window.history.replaceState(null, '', hash);
+            } catch (_) {
+                // Some local-file browser contexts restrict History API updates.
+                window.location.hash = hash;
+            }
+        });
+
+        window.addEventListener('hashchange', () => {
+            // Skip links and other in-page anchors must not reset the selection.
+            showPanel(hashId());
+        });
+    });
 })();
